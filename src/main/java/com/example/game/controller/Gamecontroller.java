@@ -41,8 +41,8 @@ public class Gamecontroller {
         return true;
     }
     @GetMapping("/findGamebyid")
-    public Game findGamebyid(@RequestParam("id") String id){
-        Game list=new Game();
+    public List<Game> findGamebyid(@RequestParam("id") String id){
+        List<Game> list=new ArrayList<Game>();
         System.out.println(id);
         list=service.findGamebyid(id);
         return list;

@@ -39,10 +39,10 @@ public class GameService {
             return true;
         else return false;
     }
-    public Game findGamebyid(String id){
-        Game game=new Game();
+    public List<Game> findGamebyid(String id){
+        List<Game> list=new ArrayList<Game>();
         System.out.println("findGamebyidService");
-        game=mapper.findGamebyid(id);
-        return game;
+        list=mapper.findGamebyid(id);
+        return list;
     }
 }

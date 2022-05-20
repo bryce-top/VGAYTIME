@@ -10,5 +10,5 @@ public interface GameMapper {
     public List<Game> findGamebytype(@Param("type")String type);
     public List<Game> findGamebyname(@Param("name")String name);
     public Boolean insertGame(@Param("game")Game game);
-    public Game findGamebyid(@Param("id")String id);
+    public List<Game> findGamebyid(@Param("id")String id);
 }

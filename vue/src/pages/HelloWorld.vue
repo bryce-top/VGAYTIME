@@ -19,6 +19,8 @@
       <el-menu-item index="/login">登录</el-menu-item>
       <b-form-input v-model="id" size="sm" class="mr-sm-2" placeholder="SearchGamebyid"></b-form-input>
       <b-button size="sm" class="my-2 my-sm-0" type="submit" @click="searchid">Search</b-button>
+      <b-form-input v-model="name" size="sm" class="mr-sm-2" placeholder="SearchGamebyname"></b-form-input>
+      <b-button size="sm" class="my-2 my-sm-0" type="submit" @click="searchname">Search</b-button>
     </el-menu>
     <div class="line"></div>
     <div id="typebutton">
@@ -57,6 +59,9 @@ export default {
   methods:{
     searchid(){
       this.$router.push({path:'/singleGame',query:{id:this.id}});
+    },
+    searchname(){
+      this.$router.push({path:'/singleGame',query:{name:this.name}});
     },
     searchAction(value){
       this.$router.push({path:'/showGame',query:{type:value}});
