@@ -4,6 +4,15 @@ public class Game {
     private String name;
     private String company;
     private int id;
+    boolean status;
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
     public int getId() {
         return id;

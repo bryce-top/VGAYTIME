@@ -34,7 +34,11 @@
         (#{game.id},#{game.name},#{game.company},#{game.console},#{game.type},#{game.introduction},#{game.sale_time},#{game.verify})
 
     </insert>
-
+    <select id="check" resultType="com.example.game.entity.Game">
+        update game
+        set status = true
+        where id = #{id}
+    </select>
 
 
 </mapper>
