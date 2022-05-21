@@ -35,10 +35,9 @@ public class Gamecontroller {
         return list;
     }
     @PostMapping("/insertGame")
-    public Boolean inserGame(@Param("game")Game name){
-        Game list =new Game();
+    public Boolean inserGame(@Param("game")Game game){
 
-        return true;
+        return service.insertGame(game);
     }
     @GetMapping("/findGamebyid")
     public List<Game> findGamebyid(@RequestParam("id") String id){
