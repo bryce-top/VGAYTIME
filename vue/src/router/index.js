@@ -8,6 +8,7 @@ import AllGame from "../pages/AllGame"
 import singleGame from "../pages/singleGame"
 import showGame from "../pages/showGame"
 import admin from "../pages/admin"
+import userHome from "../pages/userHome";
 Vue.use(Router)
 
 export default new Router({
@@ -53,7 +54,21 @@ export default new Router({
       path:'/admin',
       name:'admin',
       component:admin
+    },
+    {
+      path:'/userHome',
+      name:'userHome',
+      component:userHome
     }
 
   ]
 })
+// router.beforeEach(function (to, from, next) {
+//       if(!this.$cookies.isKey('account')){
+//         if(to.path!='/login'){
+//           return next('/login')
+//         }
+//       }
+//       next();
+// })
+// export default router

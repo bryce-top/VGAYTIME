@@ -12,6 +12,11 @@
 
 export default {
   name: "singleGame",
+  created() {
+    if (!this.$cookies.isKey('account')){
+      this.$router.push("/login")
+    }
+  },
   mounted() {
     this.search();
   },

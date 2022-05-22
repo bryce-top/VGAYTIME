@@ -27,7 +27,7 @@
     </select>
     <insert id="insertUser" parameterType="com.example.game.entity.User">
         insert into user
-        (id,username,password,account,email) values
+        (uid,username,password,account,email) values
         (#{user.id},#{user.username},#{user.password},#{user.account},#{user.email})
 
     </insert>

@@ -26,11 +26,12 @@
         <el-menu-item index="/allGame" >所有游戏</el-menu-item>
         <el-submenu index="2">
           <template #title>游戏分类</template>
-          <el-menu-item index="2-1">竞技</el-menu-item>
-          <el-menu-item index="2-2">射击</el-menu-item>
-          <el-menu-item index="2-3">角色扮演</el-menu-item>
+          <el-menu-item index="/showGame?type=竞技">竞技</el-menu-item>
+          <el-menu-item index="/showGame?type=射击">射击</el-menu-item>
+          <el-menu-item index="/showGame?type=角色扮演">角色扮演</el-menu-item>
         </el-submenu>
-        <el-menu-item index="3">关于我们</el-menu-item>
+        <el-menu-item index="" @click="changeUser">{{ sta }}</el-menu-item>
+        <el-menu-item index="" @click="userHome">{{ userhome }}</el-menu-item>
         <div class="right">
           <div class="login" v-show="noLogin">
             <el-submenu index="5">
@@ -95,23 +96,48 @@ export default {
       value: [],
       list: [],
       loading: false,
-      kb_content:''
+      kb_content:'',
+      user:'登录',
+      userhome:''
     }
   },
   mounted() {
     this.list = this.states.map(item => {
       return { value: `value:${item}`, label: `label:${item}` };
     });
+    this.changeUser();
   },
+
+
+  created() {
+    if(!this.$cookies.isKey('account')){
+      this.sta='登录'
+      this.$router.push('/login');
+    }else {this.sta='退出登录',this.userhome='个人信息'}
+  },
+
   methods:{
     getGame(){
       // window.location.href="http://localhost:8080/#/singleGame"
-
       this.$router.push({path: "/singleGame",query: {name:this.kb_content}});
       if(this.kb_content){
         this.$store.dispatch('setSearchKey',this.kb_content)  //当输入词条时，将词条更新到数据仓库
       }
+    },
+    changeUser(){
+      this.$cookies.remove('account')
+      this.sta='登录';
+      this.userhome='';
+      this.$router.push('/login');
+    },
+    userHome(){
+      if (!this.$cookies.isKey('account')){
+      }else {
+        this.$router.push('/userHome');
+      }
     }
+
+
   }
  }
 </script>

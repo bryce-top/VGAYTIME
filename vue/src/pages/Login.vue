@@ -39,7 +39,8 @@ export default {
           loginfo:''
       }
     },
-    methods: {
+
+  methods: {
       login(){
         this.axios.post('/do/user/login', "account="+this.account+"&password="+this.password+"")
           .then(res=> {

@@ -11,20 +11,38 @@
 export default {
   name: "showGame",
   created() {
-    var type=this.$route.query.type
-    this.axios.get("/do/game/findGamebytype?type="+type,).then(res=>{
-      var jsonObj =JSON.parse(JSON.stringify(res.data));
-      if (res.data){
-
-        this.game=res.data;
-      }
-    });
+    if (!this.$cookies.isKey('account')){
+      this.$router.push("/login")
+    }
   },
+  mounted() {
+    this.searchGamebyType()
+  },
+  watch: {
+    '$route' (to, from) {
+      // 在mounted函数执行的方法，放到该处
+      this.searchGamebyType();
+    }},
   data(){
     return{
       game:''
     }
+  },
+  methods:{
+    searchGamebyType(){
+
+      var type=this.$route.query.type
+
+      this.axios.get("/do/game/findGamebytype?type="+type,).then(res=>{
+        var jsonObj =JSON.parse(JSON.stringify(res.data));
+        if (res.data){
+
+          this.game=res.data;
+        }
+      });
+    }
   }
+
 }
 </script>
 
