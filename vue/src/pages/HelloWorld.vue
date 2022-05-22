@@ -1,6 +1,6 @@
 
 <template>
-  <el-carousel :interval="4000" indicator-position="outside"   style="height:900px;margin: auto;top:200px;">
+  <el-carousel :interval="4000"  indicator-position="outside" height="30vw"   style="margin: auto;top:100px;">
     <el-carousel-item v-for="item in imgArray" :key="item">
       <img :src="item" class="rightImg">
     </el-carousel-item>
@@ -22,11 +22,11 @@ export default {
       ]
     }
   },
-  // created(){
-  //   if (!this.$cookies.isKey('account')){
-  //     this.$router.push("/login")
-  //   }
-  // },
+  created(){
+    if (!this.$cookies.isKey('account')){
+      this.$router.push("/login")
+    }
+  },
 }
 </script>
 

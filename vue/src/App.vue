@@ -60,10 +60,7 @@
                 alt=""
               />{{ user.name }}</template
               >
-
               <!-- <img src="https://sanegame.oss-cn-hangzhou.aliyuncs.com/%E6%88%91%E7%9A%84.png" style="width:15%;margin-right:10%" alt=""> -->
-
-
               <el-menu-item index="6-1" @click="gotoprofile">我的账号</el-menu-item>
               <el-menu-item @click="tologout" index="6-2">退出登录</el-menu-item>
             </el-submenu>
@@ -76,24 +73,22 @@
             color: #fff;
             border: none;
           ">获取客户端</el-button>
-          <el-select style="float:right;top:10px;"
-            v-model="value"
-            multiple
-            filterable
-            remote
-            reserve-keyword
-            placeholder="请输入关键词"
-            :remote-method="remoteMethod"
-            :loading="loading">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
         </div>
+<!--                 搜索框-->
+
+          <el-col :span="6" style="float:left; margin-left: 45vw;width: 270px; hight: 40px;">
+            <el-input
+              type="text"
+              prefix-icon="el-icon-search"
+              v-model="kb_content"
+              placeholder="请输入"
+              style="width: 270px; cursor: pointer"
+              @keyup.enter.native="getGame"
+            ></el-input>
+          </el-col>
+
       </el-menu>
+
     </div>
     <router-view/>
   </div>
@@ -101,32 +96,16 @@
 
 <script>
 
+
 export default {
   name: 'App',
-
   data() {
     return {
       options: [],
       value: [],
       list: [],
       loading: false,
-      states: ["Alabama", "Alaska", "Arizona",
-        "Arkansas", "California", "Colorado",
-        "Connecticut", "Delaware", "Florida",
-        "Georgia", "Hawaii", "Idaho", "Illinois",
-        "Indiana", "Iowa", "Kansas", "Kentucky",
-        "Louisiana", "Maine", "Maryland",
-        "Massachusetts", "Michigan", "Minnesota",
-        "Mississippi", "Missouri", "Montana",
-        "Nebraska", "Nevada", "New Hampshire",
-        "New Jersey", "New Mexico", "New York",
-        "North Carolina", "North Dakota", "Ohio",
-        "Oklahoma", "Oregon", "Pennsylvania",
-        "Rhode Island", "South Carolina",
-        "South Dakota", "Tennessee", "Texas",
-        "Utah", "Vermont", "Virginia",
-        "Washington", "West Virginia", "Wisconsin",
-        "Wyoming"]
+      kb_content:''
     }
   },
   mounted() {
@@ -134,26 +113,23 @@ export default {
       return { value: `value:${item}`, label: `label:${item}` };
     });
   },
-  methods: {
-    remoteMethod(query) {
-      if (query !== '') {
-        this.loading = true;
-        setTimeout(() => {
-          this.loading = false;
-          this.options = this.list.filter(item => {
-            return item.label.toLowerCase()
-              .indexOf(query.toLowerCase()) > -1;
-          });
-        }, 200);
-      } else {
-        this.options = [];
+  methods:{
+    getGame(){
+      this.$router.push({path: "/singleGame",query: {name:this.kb_content}});
+      if(this.kb_content){
+        alert(this.kb_content)
+        this.$store.dispatch('setSearchKey',this.kb_content)  //当输入词条时，将词条更新到数据仓库
       }
     }
   }
-}
+ }
 </script>
 
 <style>
+/*#search{*/
+/*  top:10px;*/
+
+/*}*/
 #app {
   min-height: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

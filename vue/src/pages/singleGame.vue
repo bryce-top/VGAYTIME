@@ -9,6 +9,7 @@
 </template>
 
 <script>
+
 export default {
   name: "singleGame",
   created() {
@@ -32,6 +33,31 @@ export default {
         }
       });
     }
+  },
+  methods:{
+    computed: {                     //监听词条
+      getSearchKey(){
+        return this.$store.state.searchKey
+      }
+    },
+    watch: {
+      getSearchKey: {
+        handler(){  //当词条改变时执行事件
+          // this.recordis(newValue)
+          // console.log('new',newValue)
+          // console.log('old',oldValue)
+          alert(1123)
+          this.axios.get("/do/game/findGamebyname?name="+newValue,).then(res=>{
+            var jsonObj =JSON.parse(JSON.stringify(res.data));
+            if (res.data){
+              location.reload()
+              this.game=res.data;
+            }
+          });
+        }
+      }
+
+    },
   },
   data(){
     return{

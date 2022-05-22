@@ -10,7 +10,7 @@
 <!--  <div class="r1" v-for="item in game"><h1> {{item.name}}</h1>,<h2>{{item.company}}</h2></div>-->
 <!--</div>-->
   <div class="r1" v-for="item in game"><h1> {{item.name}}</h1>,<h2>{{item.company}}</h2></div>
-  <router-link :to="{path:'/'}" id="link">返回首页</router-link>
+
 </div>
 </template>
 
@@ -41,7 +41,7 @@ h1,h2{
 .AllGame{
   min-height: 100%;
   width: 100%;
-  top: 0px;
+
   left: 0px;
   position: absolute;
   background-image: url("../img/4.png");
