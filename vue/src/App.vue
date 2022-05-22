@@ -17,7 +17,6 @@
             style="
             width: 3%;
             height: auto;
-            margin-top: 1%;
             margin: 1% 2% 0 1%;
             float: left;
           "
@@ -25,14 +24,13 @@
           /></router-link>
         <el-menu-item index="/">首页</el-menu-item>
         <el-menu-item index="/allGame" >所有游戏</el-menu-item>
-
-        <el-menu-item index="3">虚幻引擎</el-menu-item>
         <el-submenu index="2">
-          <template #title>关于 SANE GAME</template>
-          <el-menu-item index="2-1">关于公司</el-menu-item>
-          <el-menu-item index="2-2">SANE GAME</el-menu-item>
-          <el-menu-item index="2-3">招纳贤士</el-menu-item>
+          <template #title>游戏分类</template>
+          <el-menu-item index="2-1">竞技</el-menu-item>
+          <el-menu-item index="2-2">射击</el-menu-item>
+          <el-menu-item index="2-3">角色扮演</el-menu-item>
         </el-submenu>
+        <el-menu-item index="3">关于我们</el-menu-item>
         <div class="right">
           <div class="login" v-show="noLogin">
             <el-submenu index="5">
@@ -51,32 +49,24 @@
               >
             </el-submenu>
           </div>
-          <div class="login" v-show="!noLogin">
-            <el-submenu index="6">
-              <template #title
-              ><img
-                src="https://sanegame.oss-cn-hangzhou.aliyuncs.com/%E6%88%91%E7%9A%84.png"
-                style="width: 15%; margin-right: 10%"
-                alt=""
-              />{{ user.name }}</template
-              >
-              <!-- <img src="https://sanegame.oss-cn-hangzhou.aliyuncs.com/%E6%88%91%E7%9A%84.png" style="width:15%;margin-right:10%" alt=""> -->
-              <el-menu-item index="6-1" @click="gotoprofile">我的账号</el-menu-item>
-              <el-menu-item @click="tologout" index="6-2">退出登录</el-menu-item>
-            </el-submenu>
-          </div>
-          <el-button style="
-            float: right;
-            height: 60px;
-            border-radius: 0%;
-            background: #721e78;
-            color: #fff;
-            border: none;
-          ">获取客户端</el-button>
-        </div>
+<!--          <div class="login" v-show="!noLogin">-->
+<!--            <el-submenu index="6">-->
+<!--              <template #title-->
+<!--              ><img-->
+<!--                src="https://sanegame.oss-cn-hangzhou.aliyuncs.com/%E6%88%91%E7%9A%84.png"-->
+<!--                style="width: 15%; margin-right: 10%"-->
+<!--                alt=""-->
+<!--              />{{ user.name }}</template-->
+<!--              >-->
+<!--              &lt;!&ndash; <img src="https://sanegame.oss-cn-hangzhou.aliyuncs.com/%E6%88%91%E7%9A%84.png" style="width:15%;margin-right:10%" alt=""> &ndash;&gt;-->
+<!--              <el-menu-item index="6-1" @click="gotoprofile">我的账号</el-menu-item>-->
+<!--              <el-menu-item @click="tologout" index="6-2">退出登录</el-menu-item>-->
+<!--            </el-submenu>-->
+<!--          </div>-->
+
 <!--                 搜索框-->
 
-          <el-col id="search" :span="6" style="float:left; margin-left: 45vw;width: 270px; hight: 40px;" >
+          <el-col id="search" :span="6" style="float:left; margin-left: 45vw;width: 270px; margin-top: 10px; margin-bottom: 5px" >
             <el-input
               type="text"
               prefix-icon="el-icon-search"
@@ -86,7 +76,7 @@
               @keyup.enter.native="getGame"
             ></el-input>
           </el-col>
-
+        </div>
       </el-menu>
 
     </div>
@@ -128,9 +118,7 @@ export default {
 
 <style>
 #search{
-  top:10px;
-  left: 600px;
-  position: absolute;
+
 }
 #app {
   min-height: 100%;

@@ -1,5 +1,11 @@
 <template>
   <div class="container">
+    <div id="poem" >
+      <h1 >夕阳红</h1><br><br>
+      <p>去吧，&nbsp&nbsp&nbsp去做不一样的自己</p><br>
+      <p>去做不被定义的狂兵</p><br>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp------致亲爱的尼少</p>
+    </div>
     <div class="box">
         <p style="text-align: center; position: relative; top: -20px">
           <img
@@ -11,7 +17,7 @@
           <h1 style="text-align: center;">注册</h1><br><br>
           用户名<el-input v-model="username" placeholder="请输入用户名"></el-input><br><br>
            邮箱<el-input v-model="email" placeholder="请输入邮箱"></el-input><br><br>
-           账号<el-input v-model="account" placeholder="请输入内容"></el-input><br><br>
+           账号<el-input v-model="account" placeholder="请输入邮箱"></el-input><br><br>
            密码<el-input v-model="password" placeholder="请输入密码"></el-input><br><br>
           <router-link :to="{path:'/login'}"><b-button id="loginbutton">去登录</b-button></router-link>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
           <b-button id="registerbutton" type="submit" @click="register">注册</b-button>
@@ -77,6 +83,11 @@ export default {
 <!--}-->
 <!--</style>-->
 <style type="text/css">
+#poem{
+  text-align: left;
+  left: 5%;
+  position: absolute;
+}
 .input{
   position: relative;
   /* background: red; */

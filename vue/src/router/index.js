@@ -7,6 +7,7 @@ import Register from "../pages/Register"
 import AllGame from "../pages/AllGame"
 import singleGame from "../pages/singleGame"
 import showGame from "../pages/showGame"
+import admin from "../pages/admin"
 Vue.use(Router)
 
 export default new Router({
@@ -47,6 +48,11 @@ export default new Router({
       path:'/showGame',
       name:'showGame',
       component:showGame
+    },
+    {
+      path:'/admin',
+      name:'admin',
+      component:admin
     }
 
   ]
