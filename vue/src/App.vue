@@ -76,7 +76,7 @@
         </div>
 <!--                 搜索框-->
 
-          <el-col :span="6" style="float:left; margin-left: 45vw;width: 270px; hight: 40px;">
+          <el-col id="search" :span="6" style="float:left; margin-left: 45vw;width: 270px; hight: 40px;" >
             <el-input
               type="text"
               prefix-icon="el-icon-search"
@@ -115,9 +115,10 @@ export default {
   },
   methods:{
     getGame(){
+      // window.location.href="http://localhost:8080/#/singleGame"
+
       this.$router.push({path: "/singleGame",query: {name:this.kb_content}});
       if(this.kb_content){
-        alert(this.kb_content)
         this.$store.dispatch('setSearchKey',this.kb_content)  //当输入词条时，将词条更新到数据仓库
       }
     }
@@ -126,10 +127,11 @@ export default {
 </script>
 
 <style>
-/*#search{*/
-/*  top:10px;*/
-
-/*}*/
+#search{
+  top:10px;
+  left: 600px;
+  position: absolute;
+}
 #app {
   min-height: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
