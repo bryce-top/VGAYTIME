@@ -38,6 +38,11 @@ public class UserService {
         mapper.insertUser(user);
         return true;
     }
+    public User getUserinfo(String account){
+        System.out.println("进入getUserinfoService");
+        User user=mapper.getUserinfo(account);
+        return user;
+    }
 
 
 }

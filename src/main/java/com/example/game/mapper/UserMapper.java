@@ -11,5 +11,5 @@ public interface UserMapper {
     public String findAccount(String account);
     public String findPassword(@Param("account")String account,@Param("password")String password);
     public void insertUser(@Param("user") User user);
-
+    public User getUserinfo(@Param("account")String account);
 }

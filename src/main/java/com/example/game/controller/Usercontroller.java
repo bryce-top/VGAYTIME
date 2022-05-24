@@ -42,6 +42,10 @@ public class Usercontroller {
         user.setUsername(username);
         user.setId("null");
         return service.insertUser(user);
-
+    }
+    @PostMapping("/getUserinfo")
+    public User getUserinfo(@Param("account")String account){
+        User user=service.getUserinfo(account);
+        return user;
     }
 }

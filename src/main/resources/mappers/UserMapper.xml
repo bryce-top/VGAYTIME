@@ -29,8 +29,13 @@
         insert into user
         (uid,username,password,account,email) values
         (#{user.id},#{user.username},#{user.password},#{user.account},#{user.email})
-
     </insert>
+    <select id="getUserinfo" resultType="com.example.game.entity.User">
+        select
+            *
+        from user
+        where account = #{account}
+    </select>
 
 
 </mapper>
