@@ -48,4 +48,9 @@ public class Usercontroller {
         User user=service.getUserinfo(account);
         return user;
     }
+    @PostMapping("updateUser")
+    public boolean updateUser(@Param("user")User user){
+
+        return service.updateUser(user);
+    }
 }

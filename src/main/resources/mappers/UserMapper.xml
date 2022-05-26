@@ -36,6 +36,11 @@
         from user
         where account = #{account}
     </select>
+    <update id="updateUser" parameterType="com.example.game.entity.User" >
+        update user
+        set username=#{user.username},password=#{user.password}
+        where account=#{user.account}
+    </update>
 
 
 </mapper>

@@ -43,6 +43,11 @@ public class UserService {
         User user=mapper.getUserinfo(account);
         return user;
     }
+    public boolean updateUser(User user){
+        System.out.println("进入updateUserService");
+        mapper.updateUser(user);
+        return true;
+    }
 
 
 }
