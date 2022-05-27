@@ -5,7 +5,7 @@ import com.example.game.mapper.UserMapper;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.example.game.DAO.SnowflakeIdWorker;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,7 @@ import java.util.List;
 public class UserService {
     @Resource
     private UserMapper mapper;
+    private SnowflakeIdWorker generate ;
     public List<User> getAllUser(){
         System.out.println("进入UserService");
         List<User> list= new ArrayList<User>();
@@ -35,6 +36,9 @@ public class UserService {
     }
     public boolean insertUser(User user){
         System.out.println("进入registerService");
+        SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
+        long id= idWorker.nextId();
+        user.setId(Long.toString(id));
         mapper.insertUser(user);
         return true;
     }
