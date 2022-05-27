@@ -12,7 +12,7 @@ import userHome from "../pages/userHome";
 Vue.use(Router)
 
 export default new Router({
-
+  mode:'history',
   routes: [
 
     {
@@ -63,12 +63,3 @@ export default new Router({
 
   ]
 })
-// router.beforeEach(function (to, from, next) {
-//       if(!this.$cookies.isKey('account')){
-//         if(to.path!='/login'){
-//           return next('/login')
-//         }
-//       }
-//       next();
-// })
-// export default router

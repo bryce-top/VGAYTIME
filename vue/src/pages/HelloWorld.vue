@@ -1,15 +1,19 @@
 
 <template>
+  <div>
+    <headbar />
   <el-carousel :interval="4000"  indicator-position="outside" height="30vw"   style="margin: auto;top:100px;">
     <el-carousel-item v-for="item in imgArray" :key="item">
       <img :src="item" class="rightImg">
     </el-carousel-item>
   </el-carousel>
+  </div>
 </template>
 
 <script>
+import headbar from '@/pages/header';
 export default {
-  components:{
+  components:{ headbar
   },
   name: 'HelloWorld',
   data () {

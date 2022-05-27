@@ -1,5 +1,6 @@
 <template>
   <div id="login">
+    <headbar />
     <div id="poem" >
     <h1 >夕阳红</h1><br><br>
       <p>去吧，&nbsp&nbsp&nbsp去做不一样的自己</p><br>
@@ -18,8 +19,14 @@
               账号<el-input v-model="account" placeholder="请输入邮箱"></el-input><br><br><br>
               密码<el-input v-model="password" placeholder="请输入密码" type="password"></el-input><br><br>
               <p id="loginfo">{{loginfo}}</p>
-              <b-button id="loginbutton" type="submit" @click="login">登录</b-button>&nbsp&nbsp&nbsp&nbsp<router-link :to="{path:'/register'}"><b-button>去注册</b-button></router-link>
-        &nbsp&nbsp&nbsp&nbsp<b-button id="adminlogin" type="submit" @click="adminlogin">管理员</b-button>
+              <b-button id="loginbutton" type="submit" @click="login">登录</b-button>&nbsp&nbsp&nbsp&nbsp
+        <router-link :to="{path:'/register'}">
+          <b-button id="registerbutton" class="pagebutton">去注册</b-button>
+        </router-link>
+        &nbsp&nbsp&nbsp&nbsp
+
+          <b-button id="adminlogin" type="submit" class="pagebutton" @click="adminlogin">管理员</b-button>
+
       </div>
     </div>
   </div>
@@ -29,9 +36,12 @@
 
 <script>
 
-
+import headbar from '@/pages/header';
 export default {
     name:"Login.vue",
+    components:{
+      headbar
+    },
     data(){
       return {
           account:'',
@@ -154,5 +164,9 @@ export default {
   position: relative;
   width: 85px;
   height: 50px;
+}
+
+.pagebutton{
+  color: white;
 }
 </style>

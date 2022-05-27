@@ -1,4 +1,7 @@
 <template>
+  <div>
+    <headbar />
+
   <div class="container">
     <div id="poem" >
       <h1 >夕阳红</h1><br><br>
@@ -19,16 +22,21 @@
            邮箱<el-input v-model="email" placeholder="请输入邮箱"></el-input><br><br>
            账号<el-input v-model="account" placeholder="请输入邮箱"></el-input><br><br>
            密码<el-input v-model="password" placeholder="请输入密码"></el-input><br><br>
-          <router-link :to="{path:'/login'}"><b-button id="loginbutton">去登录</b-button></router-link>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+          <router-link :to="{path:'/login'}"><b-button id="loginbutton" class="pagebutton">去登录</b-button></router-link>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
           <b-button id="registerbutton" type="submit" @click="register">注册</b-button>
         </div>
+  </div>
   </div>
   </div>
 </template>
 
 <script>
+import headbar from '@/pages/header';
 export default {
   name: "register",
+  components:{
+    headbar
+  },
   data(){
     return{
       username:'',
@@ -56,32 +64,7 @@ export default {
 }
 </script>
 
-<!--<style scoped>-->
-<!--.el-input {-->
-<!--  width: 200px;-->
-<!--}-->
-<!--#register{-->
-<!--  background-image:url("../img/3.png");-->
-<!--  background-repeat: no-repeat;-->
-<!--  background-position: center;-->
-<!--  background-color: pink;-->
-<!--  height: 100%;-->
-<!--  width: 100%;-->
-<!--  position: absolute;-->
-<!--  left: 0px;-->
-<!--}-->
-<!--#reg{-->
-<!--  position: absolute;-->
 
-<!--  height: 45%;-->
-<!--  width: 30%;-->
-<!--  top: 35%;-->
-<!--  left: 35%;-->
-<!--  background-color: white;-->
-<!--  opacity: 0.9;-->
-<!--  border-radius: 15px;-->
-<!--}-->
-<!--</style>-->
 <style type="text/css">
 #poem{
   text-align: left;
@@ -95,7 +78,7 @@ export default {
   width: 100%;
 }
 .container {
-  height: 100%;
+  /*height: 100%;*/
 }
 
 .box {
@@ -154,5 +137,8 @@ export default {
   position: relative;
   width: 85px;
   height: 50px;
+}
+.pagebutton{
+  color: white;
 }
 </style>

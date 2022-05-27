@@ -24,6 +24,7 @@
     "vue-cookie": "^1.1.4",
     "vue-cookies": "^1.8.1",
     "vue-router": "^3.0.1",
+    "vuetify": "^2.6.6",
     "vuex": "^3.4.0"
   },
   "devDependencies": {

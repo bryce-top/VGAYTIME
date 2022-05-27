@@ -12,6 +12,8 @@ import qs from 'qs';
 Vue.prototype.$qs = qs
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import Vuetify from 'vuetify'
+import vuetify from '@/plugins/vuetify'
 
 import cookies from 'vue-cookies'
 Vue.prototype.$cookies = cookies;
@@ -24,9 +26,12 @@ Vue.use(ElementUI)
 Vue.config.productionTip = false
 Vue.prototype.$axios=Axios
 Axios.defaults.baseURL='/api'
+import header from "./pages/header";
+Vue.component('headbar', header);
 
 /* eslint-disable no-new */
 new Vue({
+  vuetify,
   el: '#app',
   router,
   components: { App },

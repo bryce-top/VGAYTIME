@@ -1,38 +1,114 @@
 <template>
-<div style="top:0; position: absolute; width: 100%">
-<el-menu
-  :default-active="activeIndex2"
-  class="el-menu-demo"
-  mode="horizontal"
-  @select="handleSelect"
-  background-color="#545c64"
-  text-color="#fff"
+  <v-app id="inspire">
+    <v-system-bar app>
+      <v-spacer></v-spacer>
 
-  active-text-color="#ffd04b">
-<el-menu-item index="1" >用户管理</el-menu-item>
-<el-submenu index="2">
-  <template slot="title" >游戏管理</template>
-  <el-menu-item index="2-1">所有游戏</el-menu-item>
-  <el-menu-item index="2-2">已审核</el-menu-item>
-  <el-menu-item index="2-3">待审核</el-menu-item>
-</el-submenu>
-<el-menu-item index="3" >评论管理</el-menu-item>
-<el-menu-item index="4" ><router-link :to="{path:'/'}"><b-button>游戏主页</b-button></router-link></el-menu-item>
-</el-menu>
-</div>
+      <v-icon>mdi-square</v-icon>
+
+      <v-icon>mdi-circle</v-icon>
+
+      <v-icon>mdi-triangle</v-icon>
+    </v-system-bar>
+
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+    >
+      <v-sheet
+        color="grey lighten-4"
+        class="pa-4"
+      >
+        <v-avatar
+          class="mb-4"
+          color="grey darken-1"
+          size="64"
+        ></v-avatar>
+
+        <div>john@vuetifyjs.com</div>
+      </v-sheet>
+
+      <v-divider></v-divider>
+
+      <v-list>
+        <v-list-item
+          v-for="[icon, text] in links"
+          :key="icon"
+          link
+        >
+          <v-list-item-icon>
+            <v-icon>{{ icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ text }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-main>
+      <v-container
+        class="py-8 px-6"
+        fluid
+      >
+        <v-row>
+          <v-col
+            v-for="card in cards"
+            :key="card"
+            cols="12"
+          >
+            <v-card>
+              <v-subheader>{{ card }}</v-subheader>
+
+              <v-list two-line>
+                <template v-for="n in 6">
+                  <v-list-item
+
+                    :key="n"
+                  >
+                    <v-list-item-avatar color="grey darken-1">
+                    </v-list-item-avatar>
+
+                    <v-list-item-content>
+                      <v-list-item-title>Message {{ n }}</v-list-item-title>
+
+                      <v-list-item-subtitle>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus distinctio similique
+                      </v-list-item-subtitle>
+                    </v-list-item-content>
+                  </v-list-item>
+
+                  <v-divider
+                    v-if="n !== 6"
+                    :key="`divider-${n}`"
+                    inset
+                  ></v-divider>
+                </template>
+              </v-list>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
+
 <script>
 export default {
-  data() {
-    return {
-      activeIndex: '1',
-      activeIndex2: '1'
-    };
-  },
-  methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-    }
-  }
+  data: () => ({
+    cards: ['Today', 'Yesterday'],
+    drawer: null,
+    links: [
+      ['mdi-inbox-arrow-down', 'Inbox'],
+      ['mdi-send', 'Send'],
+      ['mdi-delete', 'Trash'],
+      ['mdi-alert-octagon', 'Spam'],
+    ],
+  }),
 }
 </script>
+<style>
+#inspire{
+  top: 0%;
+}
+</style>

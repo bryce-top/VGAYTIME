@@ -1,12 +1,17 @@
 <template>
 <div>
+  <headbar />
   <h1> Hello, {{user}}</h1>
 </div>
 </template>
 
 <script>
+import headbar from '@/pages/header';
 export default {
   name: "UserInfo.vue",
+  components:{
+    headbar
+  },
   data(){
     return{
       user:''

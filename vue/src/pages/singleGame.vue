@@ -1,17 +1,25 @@
 <template>
+  <div>
+    <headbar />
+
   <div class="singleGame">
+
     <ul v-for="item in game">
       <li>{{item.name}}</li>
       <li>{{item.company}}</li>
     </ul>
 
   </div>
+  </div>
 </template>
 
 <script>
-
+import headbar from '@/pages/header';
 export default {
   name: "singleGame",
+  components:{
+    headbar
+  },
   created() {
     if (!this.$cookies.isKey('account')){
       this.$router.push("/login")

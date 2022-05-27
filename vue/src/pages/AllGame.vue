@@ -1,4 +1,6 @@
 <template style="height:100%">
+  <div>
+  <headbar />
 <div class="AllGame">
   <el-row :gutter="20">
     <el-col :span="6"><div class="grid-content bg-purple">动作</div></el-col>
@@ -12,12 +14,16 @@
   <div class="r1" v-for="item in game"><h1> {{item.name}}</h1>,<h2>{{item.company}}</h2></div>
 
 </div>
+  </div>
 </template>
 
 <script>
-
+import headbar from '@/pages/header';
 export default {
   name: "AllGame",
+  components:{
+    headbar
+  },
   data(){
     return{
       game:''

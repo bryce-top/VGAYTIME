@@ -1,5 +1,6 @@
 <template>
   <div>
+    <headbar />
     <div id="form">
       <b-card bg-variant="light">
         <b-form-group
@@ -62,8 +63,12 @@
 </template>
 
 <script>
+import headbar from '@/pages/header';
 export default {
   name: "userHome",
+  components:{
+    headbar
+  },
   data(){
     return{
       username:'',
