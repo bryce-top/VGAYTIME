@@ -41,6 +41,7 @@ public class Usercontroller {
         user.setEmail(email);
         user.setUsername(username);
         user.setId("null");
+
         return service.insertUser(user);
     }
     @PostMapping("/getUserinfo")

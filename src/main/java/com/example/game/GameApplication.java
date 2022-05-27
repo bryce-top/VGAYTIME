@@ -1,5 +1,6 @@
 package com.example.game;
 
+import com.example.game.DAO.SnowflakeIdWorker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
