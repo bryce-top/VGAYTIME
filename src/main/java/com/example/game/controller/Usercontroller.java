@@ -48,8 +48,8 @@ public class Usercontroller {
         User user=service.getUserinfo(account);
         return user;
     }
-    @PostMapping("updateUser")
-    public boolean updateUser(@Param("user")User user){
+    @PostMapping("/updateUser")
+    public boolean updateUser(@RequestBody User user){
 
         return service.updateUser(user);
     }
