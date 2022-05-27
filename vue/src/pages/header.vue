@@ -89,7 +89,7 @@ export default {
   created() {
     if(!this.$cookies.isKey('account')){
       this.sta='登录'
-      this.$router.push('/login');
+      // this.$router.push('/login');
     }else {this.sta='退出登录',this.userhome='个人信息'}
   },
 

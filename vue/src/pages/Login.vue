@@ -1,4 +1,5 @@
 <template>
+  <div id="building">
   <div id="login">
     <headbar />
     <div id="poem" >
@@ -11,7 +12,7 @@
       <p style="text-align: center; position: relative; top: 45px;left:-8px;">
         <img
           src="https://sanegame.oss-cn-hangzhou.aliyuncs.com/LOGO.png"
-          style="position:absolute;width: 67px; height: 33px;top:-160px;left:90px;"
+          style="position:absolute;width: 67px; height: 33px;top:-160px;left:100px;"
         />
       </p>
       <div class="reg" style="color:white;">
@@ -29,6 +30,7 @@
 
       </div>
     </div>
+  </div>
   </div>
 
 
@@ -93,6 +95,14 @@ export default {
 
 
 <style type="text/css">
+#building{
+  background:url("../img/bak.png");
+  width:100%;
+  height:100%;
+  position:fixed;
+  background-size:100% 100%;
+}
+
 #poem{
   text-align: left;
   left: 5%;

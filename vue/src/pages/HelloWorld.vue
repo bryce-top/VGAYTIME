@@ -1,14 +1,20 @@
 
 <template>
-  <div>
+  <div id="building">
+    <div>
     <headbar />
-  <el-carousel :interval="4000"  indicator-position="outside" height="30vw"   style="margin: auto;top:100px;">
+      <div id="title">
+        <h1>精选游戏</h1>
+      </div>
+  <el-carousel :interval="4000"  indicator-position="outside" height="720px"  style="margin: auto;top:100px;">
     <el-carousel-item v-for="item in imgArray" :key="item">
       <img :src="item" class="rightImg">
     </el-carousel-item>
   </el-carousel>
   </div>
+  </div>
 </template>
+
 
 <script>
 import headbar from '@/pages/header';
@@ -19,31 +25,40 @@ export default {
   data () {
     return {
       imgArray: [
-        require('../img/1.png'),
-        require('../img/2.png'),
-        require('../img/3.png'),
-        require('../img/4.png')
+        require('../img/game1.jpg'),
+        require('../img/game2.jpg'),
+        require('../img/game3.jpg'),
+        require('../img/game4.jpg'),
       ]
     }
   },
-  created(){
-    if (!this.$cookies.isKey('account')){
-      this.$router.push("/login")
-    }
-  },
+  // created(){
+  //   if (!this.$cookies.isKey('account')){
+  //     this.$router.push("/login")
+  //   }
+  // },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2, h3 {
-  font-weight: normal;
-  color: aqua;
+#title{
+position:absolute;
+  top:10%;
+  left:10%;
+  color: purple;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
-
+#building{
+  background:url("../img/bak.png");
+  width:100%;
+  height:100%;
+  position:fixed;
+  background-size:100% 100%;
+}
 .rightImg {
-  width: 1440px;
-  height: 900px;
+  width: 1280px;
+  height: 720px;
 }
 
 .el-carousel__item h3 {
@@ -51,7 +66,6 @@ h1, h2, h3 {
   color: #475669;
   font-size: 18px;
   opacity: 0.75;
-  line-height: 600px;
   margin: 0;
 }
 

@@ -1,19 +1,16 @@
 <template style="height:100%">
+  <div id="building">
   <div>
   <headbar />
-<div class="AllGame">
-  <el-row :gutter="20">
-    <el-col :span="6"><div class="grid-content bg-purple">动作</div></el-col>
-    <el-col :span="6"><div class="grid-content bg-purple">竞速</div></el-col>
-    <el-col :span="6"><div class="grid-content bg-purple">射击</div></el-col>
-    <el-col :span="6"><div class="grid-content bg-purple">休闲</div></el-col>
-  </el-row>
-<!--<div id="r1">-->
-<!--  <div class="r1" v-for="item in game"><h1> {{item.name}}</h1>,<h2>{{item.company}}</h2></div>-->
-<!--</div>-->
-  <div class="r1" v-for="item in game"><h1> {{item.name}}</h1>,<h2>{{item.company}}</h2></div>
-
-</div>
+    <div id="tab">
+    <el-tabs :tab-position="tabPosition" v-model="activeName" @tab-click="handleClick" >
+      <el-tab-pane label="所有游戏" name="first">所有游戏</el-tab-pane>
+      <el-tab-pane label="动作游戏" name="second">动作游戏</el-tab-pane>
+      <el-tab-pane label="角色扮演游戏" name="third">角色扮演游戏</el-tab-pane>
+      <el-tab-pane label="射击游戏" name="fourth">射击游戏</el-tab-pane>
+    </el-tabs>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -26,7 +23,8 @@ export default {
   },
   data(){
     return{
-      game:''
+      activeName: 'first',
+      tabPosition: 'left'
     }
   },
 
@@ -35,32 +33,34 @@ export default {
       var jsonObj =JSON.parse(JSON.stringify(res.data));
       this.game=res.data;
     })
-    if (!this.$cookies.isKey('account')){
-      this.$router.push("/login")
-    }
+    // if (!this.$cookies.isKey('account')){
+    //   this.$router.push("/login")
+    // }
   },
+  methods: {
+    handleClick(tab, event) {
+      console.log(tab, event);
+    }
+  }
 
 }
 </script>
 
 <style scoped>
+#tab{
+  color: white;
+}
+#building{
+  background:url("../img/bak.png");
+  width:100%;
+  height:100%;
+  position:fixed;
+  background-size:100% 100%;
+}
 h1,h2{
   color: red;
 }
-.AllGame{
-  min-height: 100%;
-  width: 100%;
 
-  left: 0px;
-  position: absolute;
-  background-image: url("../img/4.png");
-  background-attachment: scroll;
-  background-repeat: repeat-y;
-
-  background-position: center;
-  /*background-size: cover;*/
-
-}
 /*.el-row {*/
 /*   margin-bottom: 20px;*/
 /*&:last-child {*/

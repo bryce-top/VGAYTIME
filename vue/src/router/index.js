@@ -11,6 +11,7 @@ import admin from "../pages/admin"
 import userHome from "../pages/userHome";
 Vue.use(Router)
 
+
 export default new Router({
   mode:'history',
   routes: [

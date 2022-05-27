@@ -1,4 +1,5 @@
 <template>
+  <div id="building">
   <div>
     <headbar />
 
@@ -25,6 +26,7 @@
           <router-link :to="{path:'/login'}"><b-button id="loginbutton" class="pagebutton">去登录</b-button></router-link>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
           <b-button id="registerbutton" type="submit" @click="register">注册</b-button>
         </div>
+  </div>
   </div>
   </div>
   </div>
@@ -66,6 +68,13 @@ export default {
 
 
 <style type="text/css">
+#building{
+  background:url("../img/bak.png");
+  width:100%;
+  height:100%;
+  position:fixed;
+  background-size:100% 100%;
+}
 #poem{
   text-align: left;
   left: 5%;
