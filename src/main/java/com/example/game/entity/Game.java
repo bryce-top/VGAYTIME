@@ -5,6 +5,15 @@ public class Game {
     private String company;
     private int id;
     boolean status;
+    private String content;
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getContent() {
+        return content;
+    }
 
     public boolean isStatus() {
         return status;

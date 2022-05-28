@@ -20,10 +20,7 @@
               账号<el-input v-model="account" placeholder="请输入邮箱"></el-input><br><br><br>
               密码<el-input v-model="password" placeholder="请输入密码" type="password"></el-input><br><br>
               <p id="loginfo">{{loginfo}}</p>
-              <b-button id="loginbutton" type="submit" @click="login">登录</b-button>&nbsp&nbsp&nbsp&nbsp
-        <router-link :to="{path:'/register'}">
-          <b-button id="registerbutton" class="pagebutton">去注册</b-button>
-        </router-link>
+              <b-button id="loginbutton" type="submit" @click="login">登录</b-button>&nbsp&nbsp&nbsp&nbsp<router-link :to="{path:'/register'}"><b-button id="registerbutton" class="pagebutton">去注册</b-button></router-link>
         &nbsp&nbsp&nbsp&nbsp
 
           <b-button id="adminlogin" type="submit" class="pagebutton" @click="adminlogin">管理员</b-button>

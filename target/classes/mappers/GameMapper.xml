@@ -20,6 +20,7 @@
         select
             *
         from gameinfo where name like "%"#{name }"%"
+        limit #{fo},#{to}
 
     </select>
     <select id="findGamebyid" resultType="com.example.game.entity.Game">
@@ -39,6 +40,9 @@
         set status = true
         where id = #{id}
     </select>
-
+    <select id="findTotal" resultType="int">
+        select count(id)
+        from gameinfo where name like "%"#{name }"%"
+    </select>
 
 </mapper>

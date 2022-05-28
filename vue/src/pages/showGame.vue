@@ -53,13 +53,14 @@ export default {
       });
     }else if (this.$route.query.name){
       this.$cookies.remove("game")
+      this.$cookies.remove("game_id")
       var name=this.$route.query.name
       this.axios.get("/do/game/findTotal?name="+name).then(res=>{
         this.page_count=res.data
-        alert(res.data)
         if (res.data!=''){
               this.page=0
               this.$cookies.set("game",name,"1h")
+              this.$cookies.set("game_id",this.$route.query.id,"1h")
               this.game=[]
               this.getData()
               this.reload()

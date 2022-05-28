@@ -9,14 +9,19 @@ import java.util.List;
 @Service
 public class CommentService {
     private CommentMapper mapper;
-    public List<Comment> getGameComment(int game_id){
+    public List<Comment> getGameComment(int page,int page_size,int game_id){
         List<Comment> list=new ArrayList<Comment>();
-        list= mapper.getGameComment(game_id);
+        int fo=page*page_size;
+        int to=page_size;
+        list= mapper.getGameComment(fo,to,game_id);
         return list;
     }
     public boolean insertComment(Comment comment){
         if(mapper.insertComment(comment)){
             return true;
         }else return false;
+    }
+    public int getTotal(String id){
+        return mapper.getTotal(id);
     }
 }

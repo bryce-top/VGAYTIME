@@ -14,12 +14,17 @@ public class Commentcontroller {
     @Resource
     private CommentService service;
     @GetMapping("/getGameComment")
-    public List<Comment> getGameComment(@RequestParam("game_id")int game_id){
-        List<Comment> list= service.getGameComment(game_id);
+    public List<Comment> getGameComment(int page,int page_size,int game_id){
+        List<Comment> list= service.getGameComment(page, page_size, game_id);
         return list;
     }
     @PostMapping("/insertGameComment")
     public boolean insertGameComment(Comment comment){
         return service.insertComment(comment);
+    }
+    @GetMapping("/getTotal")
+    public int getTotal(String id){
+        int to=0;
+        return to;
     }
 }
