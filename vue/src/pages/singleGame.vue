@@ -34,29 +34,6 @@ export default {
       this.search();
     }},
 
-    // computed: {                     //监听词条
-    //   getSearchKey(){
-    //     return this.$store.state.searchKey
-    //   }
-    // },
-    // watch: {
-    //   getSearchKey: {
-    //     handler(newValue,oldValue){  //当词条改变时执行事件
-    //       // this.recordis(newValue)
-    //       // console.log('new',newValue)
-    //       // console.log('old',oldValue)
-    //       alert(newValue)
-    //       this.axios.get("/do/game/findGamebyname?name="+newValue,).then(res=>{
-    //         var jsonObj =JSON.parse(JSON.stringify(res.data));
-    //         if (res.data){
-    //           location.reload()
-    //           this.game=res.data;
-    //         }
-    //       });
-    //     }
-    //   }
-
-
   // },
   data(){
     return{
@@ -78,12 +55,17 @@ export default {
 
           }
         });}else if(this.$route.query.name){
+
         var name=this.$route.query.name
         this.axios.get("/do/game/findGamebyname?name="+name,).then(res=>{
           var jsonObj =JSON.parse(JSON.stringify(res.data));
-          if (res.data){
+
+          if (res.data!=''){
             this.game=res.data;
             this.reload()
+          }else{
+            alert("无数据！");
+            this.$router.push("/");
           }
         });
       }
@@ -95,5 +77,10 @@ export default {
 </script>
 
 <style scoped>
+.singleGame{
+  background-image: url("../img/bak.png");
+  height: 1080px;
+  width: 1920px;
+}
 
 </style>
