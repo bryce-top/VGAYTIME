@@ -2,14 +2,22 @@
   <div id="building">
   <div>
   <headbar />
-    <div id="tab">
-    <el-tabs :tab-position="tabPosition" v-model="activeName" @tab-click="handleClick" >
-      <el-tab-pane label="所有游戏" name="first">所有游戏</el-tab-pane>
-      <el-tab-pane label="动作游戏" name="second">动作游戏</el-tab-pane>
-      <el-tab-pane label="角色扮演游戏" name="third">角色扮演游戏</el-tab-pane>
-      <el-tab-pane label="射击游戏" name="fourth">射击游戏</el-tab-pane>
-    </el-tabs>
-    </div>
+    <el-col :span="1">
+      <el-menu
+        :mode="horizontal"
+        default-active="activeIndex2"
+        class="el-menu-demo"
+        mode="horizontal"
+        @select="handleSelect"
+        background-color="#303133"
+        text-color="#C0C4CC"
+        active-text-color="#D351E1">
+        <el-menu-item index="1">所有游戏</el-menu-item>
+        <el-menu-item index="2">动作游戏</el-menu-item>
+        <el-menu-item index="3">角色扮演</el-menu-item>
+        <el-menu-item index="4">射击游戏</el-menu-item>
+      </el-menu>
+    </el-col>
   </div>
   </div>
 </template>
@@ -24,7 +32,7 @@ export default {
   data(){
     return{
       activeName: 'first',
-      tabPosition: 'left'
+      tabPosition: 'left',
     }
   },
 
@@ -47,67 +55,11 @@ export default {
 </script>
 
 <style scoped>
-#tab{
-  color: white;
-}
 #building{
   background:url("../img/bak.png");
   width:100%;
   height:100%;
   position:fixed;
   background-size:100% 100%;
-}
-h1,h2{
-  color: red;
-}
-
-/*.el-row {*/
-/*   margin-bottom: 20px;*/
-/*&:last-child {*/
-/*   margin-bottom: 0;*/
-/* }*/
-/*}*/
-.el-col {
-  border-radius: 4px;
-}
-.bg-purple-dark {
-  background: #99a9bf;
-}
-.bg-purple {
-  background: #d3dce6;
-}
-.bg-purple-light {
-  background: #e5e9f2;
-}
-.grid-content {
-  border-radius: 4px;
-  min-height: 36px;
-}
-.row-bg {
-  padding: 10px 0;
-  background-color: #f9fafc;
-}
-#r1{
-  position: absolute;
-  left: 1%;
-  height: 80%;
-  background: #99a9bf;
-  opacity: 0.7;
-  top: 10%;
-  width: 22%;
-}
-.r1{
-  float: left;
-  min-height: 30%;
-  width: 25%;
-  background: #2c3e50;
-  border: 6px solid#e3e3e3;
-  opacity: 0.8;
-}
-#link{
-  top: 90%;
-  left: 5%;
-  position: absolute;
-  color: red;
 }
 </style>
