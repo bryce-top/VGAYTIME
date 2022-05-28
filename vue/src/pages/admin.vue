@@ -169,7 +169,7 @@ export default {
         isGameCheck: false,
         isMyInfo: false,
         isWelcome: true,
-        email:this.$cookies.get(''),
+        email:this.$cookies.get('adminaccount'),
         users: [],
       }
     },

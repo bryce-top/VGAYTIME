@@ -89,17 +89,15 @@ export default {
   created() {
     if(!this.$cookies.isKey('account')){
       this.sta='登录'
-      //this.$router.push('/login');
+      // this.$router.push('/login');
     }else {this.sta='退出登录',this.userhome='个人信息'}
   },
 
   methods:{
     getGame(){
       // window.location.href="http://localhost:8080/#/singleGame"
-      this.$router.push({path: "/singleGame",query: {name:this.kb_content}});
-      if(this.kb_content){
-        this.$store.dispatch('setSearchKey',this.kb_content)  //当输入词条时，将词条更新到数据仓库
-      }
+      this.$router.push({path: "/showGame",query: {name:this.kb_content}});
+
     },
     changeUser(){
       this.$cookies.remove('account')

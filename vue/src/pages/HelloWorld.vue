@@ -9,9 +9,9 @@
         <h1>精选游戏</h1>
       </div>
   <el-carousel :interval="4000"  indicator-position="outside" height="720px"  style="margin: auto;top:200px;">
-<!--    <el-carousel-item v-for="item in imgArray" :key="item">-->
-<!--      <img :src="item" class="rightImg">-->
-<!--    </el-carousel-item>-->
+    <el-carousel-item v-for="item in imgArray" :key="item">
+      <img :src="item" class="rightImg">
+    </el-carousel-item>
   </el-carousel>
   </div>
   </div>
