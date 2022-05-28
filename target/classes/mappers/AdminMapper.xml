@@ -10,4 +10,9 @@
         from admin
         where email=#{email}
     </select>
+    <update id="updatePass" >
+        update admin
+        set password=#{newpass}
+        where email=#{email}
+    </update>
 </mapper>

@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface AdminMapper {
     public Administrator findPassword(@Param("email") String email);
+    public void updatePass(@Param("email") String email , @Param("newpass") String newpass);
 }
+

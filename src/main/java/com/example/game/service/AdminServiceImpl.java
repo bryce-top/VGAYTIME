@@ -1,5 +1,6 @@
 package com.example.game.service;
 
+import com.example.game.entity.Administrator;
 import com.example.game.mapper.AdminMapper;
 import com.example.game.mapper.GameMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,19 @@ public class AdminServiceImpl implements AdminService{
         try{
             gameMapper.check(id).setStatus(true);
                 flag = true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean updatePass(Administrator admin) {
+        boolean flag = false;
+        try{
+            System.out.println("in upd pass service");
+            adminMapper.updatePass(admin.getEmail(), admin.getPassword());
+            flag = true;
         }catch (Exception e){
             e.printStackTrace();
         }

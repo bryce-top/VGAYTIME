@@ -92,7 +92,7 @@ export default {
 
     changeInfo(){
 
-      alert("修改成功")
+      alert(this.user.account)
       this.axios.post('/do/user/updateUser', this.user)
         .then(res=> {
           console.log(res);

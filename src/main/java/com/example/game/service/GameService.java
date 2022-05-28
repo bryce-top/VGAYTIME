@@ -27,12 +27,10 @@ public class GameService {
         list=mapper.findGamebytype(type);
         return list;
     }
-    public List<Game> findGamebyname(int page,int page_size,String name){
+    public List<Game> findGamebyname(String name){
         System.out.println("进入findGamebyname");
         List<Game> list=new ArrayList<Game>();
-        int fo=page*page_size;
-        int to=page_size;
-        list=mapper.findGamebyname(fo, to, name);
+        list=mapper.findGamebyname(name);
         return list;
     }
     public Boolean insertGame(Game game){
@@ -46,9 +44,5 @@ public class GameService {
         System.out.println("findGamebyidService");
         list=mapper.findGamebyid(id);
         return list;
-    }
-    public int findTotal(String name){
-        System.out.println("进入findTotalService");
-        return mapper.findTotal(name);
     }
 }

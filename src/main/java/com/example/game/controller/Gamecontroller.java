@@ -29,10 +29,9 @@ public class Gamecontroller {
         return list;
     }
     @GetMapping("/findGamebyname")
-    public List<Game> findGamebyname(int page,int page_size,String name){
+    public List<Game> findGamebyname(@RequestParam("name")String name){
         List<Game> list=new ArrayList<Game>();
-        System.out.println("page :"+page+"    pagesize :"+page_size+"    game :"+name);
-        list=service.findGamebyname(page,page_size,name);
+        list=service.findGamebyname(name);
         return list;
     }
     @PostMapping("/insertGame")
@@ -46,11 +45,6 @@ public class Gamecontroller {
         System.out.println(id);
         list=service.findGamebyid(id);
         return list;
-    }
-    @GetMapping("/findTotal")
-    public int findTotal(@RequestParam("name")String name){
-        System.out.println(name);
-        return service.findTotal(name);
     }
 
 

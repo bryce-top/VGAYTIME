@@ -51,7 +51,10 @@ public class Usercontroller {
     }
     @PostMapping("/updateUser")
     public boolean updateUser(@RequestBody User user){
-
         return service.updateUser(user);
+    }
+    @PostMapping("/deleteUser")
+    public boolean deleteUser(@RequestBody User user){
+        return service.deleteUser(user);
     }
 }

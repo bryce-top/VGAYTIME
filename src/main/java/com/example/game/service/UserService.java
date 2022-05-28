@@ -52,6 +52,11 @@ public class UserService {
         mapper.updateUser(user);
         return true;
     }
+    public boolean deleteUser(User user){
+        System.out.println("进入deleteUserService");
+        mapper.deleteUser(user);
+        return true;
+    }
 
 
 }

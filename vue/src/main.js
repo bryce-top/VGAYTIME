@@ -28,6 +28,11 @@ Vue.prototype.$axios=Axios
 Axios.defaults.baseURL='/api'
 import header from "./pages/header";
 Vue.component('headbar', header);
+import userTable from "./pages/userTable";
+Vue.component('userTable',userTable);
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import updatePass from "./pages/updatePass";
+Vue.component('updatePass', updatePass);
 
 /* eslint-disable no-new */
 new Vue({

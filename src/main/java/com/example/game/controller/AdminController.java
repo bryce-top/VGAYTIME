@@ -31,4 +31,10 @@ public class AdminController {
         System.out.println("gameCheck controller");
         return service.gameCheck(id);
     }
+    @RequestMapping(value = "/updatePass", method = RequestMethod.POST)
+    public Boolean updatePass(@RequestBody Administrator admin){
+        System.out.println("updatePass controller");
+        return service.updatePass(admin);
+    }
+
 }

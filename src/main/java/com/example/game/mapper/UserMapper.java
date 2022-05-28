@@ -13,4 +13,5 @@ public interface UserMapper {
     public void insertUser(@Param("user") User user);
     public User getUserinfo(@Param("account")String account);
     public void updateUser(@Param("user")User user);
+    public void deleteUser(@Param("user")User user);
 }
