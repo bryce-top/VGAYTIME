@@ -119,6 +119,9 @@
               <div v-if="isMyInfo">
                 <updatePass />
               </div>
+              <div v-if="isGameCheck">
+                <gameCheck />
+              </div>
             </v-sheet>
           </v-col>
         </v-row>
@@ -130,6 +133,7 @@
 <script>
 import userTable from '@/pages/userTable';
 import updatePass from "./updatePass";
+import gameCheck from "./gameCheck";
 export default {
   name:'admin',
   methods: {

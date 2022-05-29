@@ -21,6 +21,12 @@ public class GameService {
         list=mapper.selectAll();
         return list;
     }
+    public List<Game> uncheckGame(){
+        System.out.println("进入uncheckGameService");
+        List<Game> list= new ArrayList<Game>();
+        list=mapper.uncheckGame();
+        return list;
+    }
     public List<Game> findGamebytype(String type){
         System.out.println("进入findGamebytypeService");
         List<Game> list=new ArrayList<Game>();
