@@ -50,5 +50,14 @@
         select count(id)
         from gameinfo where name like "%"#{name }"%"
     </select>
+    <delete id="deleteGame" parameterType="com.example.game.entity.Game">
+        DELETE FROM gameinfo
+        WHERE id = #{game.id};
 
+    </delete>
+    <update id="updateGame" parameterType="com.example.game.entity.Game" >
+        update gameinfo
+        set name=#{game.name},type=#{game.type}, company=#{game.company}, region=#{game.region}, dimension=#{game.dimension}, content = #{game.content}
+        where id=#{game.id}
+    </update>
 </mapper>

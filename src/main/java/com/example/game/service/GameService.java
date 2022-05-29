@@ -57,4 +57,14 @@ public class GameService {
         System.out.println("进入findTotalService");
         return mapper.findTotal(name);
     }
+    public boolean deleteGame(Game game){
+        System.out.println("进入deletegameService");
+        mapper.deleteGame(game);
+        return true;
+    }
+    public boolean updateGame(Game game){
+        System.out.println("进入updateGameService");
+        mapper.updateGame(game);
+        return true;
+    }
 }

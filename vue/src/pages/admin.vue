@@ -122,6 +122,9 @@
               <div v-if="isGameCheck">
                 <gameCheck />
               </div>
+              <div v-if="isGameManage">
+                <gameManage />
+              </div>
             </v-sheet>
           </v-col>
         </v-row>
@@ -134,6 +137,7 @@
 import userTable from '@/pages/userTable';
 import updatePass from "./updatePass";
 import gameCheck from "./gameCheck";
+import gameManage from "./gameManage";
 export default {
   name:'admin',
   methods: {

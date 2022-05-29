@@ -58,6 +58,14 @@ public class Gamecontroller {
         list=service.uncheckGame();
         return list;
     }
+    @PostMapping("/deleteGame")
+    public boolean deleteUser(@RequestBody Game game){
+        return service.deleteGame(game);
+    }
+    @PostMapping("/updateGame")
+    public boolean updateGame(@RequestBody Game game){
+        return service.updateGame(game);
+    }
 
 
 

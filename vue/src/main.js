@@ -35,7 +35,8 @@ import updatePass from "./pages/updatePass";
 Vue.component('updatePass', updatePass);
 import gameCheck from "./pages/gameCheck";
 Vue.component('gameCheck',gameCheck);
-
+import gameManage from "./pages/gameManage";
+Vue.component('gameManage',gameManage);
 /* eslint-disable no-new */
 new Vue({
   vuetify,
