@@ -52,12 +52,13 @@ export default {
         this.axios.post('/do/user/login', "account="+this.account+"&password="+this.password+"")
           .then(res=> {
             console.log(res);
-            if (res.data){
+            if (res.data!=0){
 
               this.loginfo="登录成功";
 
               this.$cookies.set('account',this.account,'1h');
-
+              alert(res.data)
+              this.$cookies.set("user_id",res.data,'1h');
               window.location.href='/'
             }else {
             this.loginfo="账号或密码错误！"

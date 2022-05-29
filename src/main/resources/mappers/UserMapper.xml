@@ -46,6 +46,12 @@
         WHERE account = #{user.account};
 
     </delete>
+    <select id="findId" resultType="int">
+        select
+            uid
+        from user
+        where account = #{account}
+    </select>
 
 
 </mapper>

@@ -18,14 +18,18 @@
     </div>
     <div id="comment">
      <h1 style="color: white">评论</h1>
+      <b-input-group prepend="评论" class="mt-3">
+        <b-form-input v-model="newcomment"></b-form-input>
+        <b-input-group-append>
+          <b-button variant="info" @click="insertComment()">发表</b-button>
+        </b-input-group-append>
+      </b-input-group>
       <hr class="my-4">
-    <div id="singlecomment" v-for="item in comment">
-    <b-list-group >
-      <b-list-group-item >{{  }}</b-list-group-item>
-      <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-      <b-list-group-item>Morbi leo risus</b-list-group-item>
-    </b-list-group>
-  </div>
+    <div id="singlecomment" v-for="item in comment" >
+      <b-list-group  >
+        <b-list-group-item style="background-color: #2c3e50;color: white">{{ item.content }}</b-list-group-item>
+      </b-list-group>
+    </div>
   </div>
   </div>
   </div>
@@ -45,6 +49,7 @@ export default {
   },
   mounted() {
     this.search();
+    window.addEventListener('scroll', this.lazyLoading);
   },
   watch: {
     '$route' (to, from) {
@@ -59,9 +64,10 @@ export default {
       company:'',
       gameinfo:'',
       page: 0,
-      page_size: 5,
+      page_size: 15,
       page_count: 10,
-      comment:[]
+      comment:[],
+      newcomment:''
     }
   },
   methods:{
@@ -74,6 +80,10 @@ export default {
             this.gamename=jsonObj[0].name
             this.gameinfo=jsonObj[0].content
             this.company=jsonObj[0].company
+            this.axios.get("/do/comment/getTotal?game_id="+this.$cookies.get("game_id")).then(res=>{
+              if(res.data)
+               this.page_count=res.data
+            });
             this.getData()
           }
         });}
@@ -105,7 +115,7 @@ export default {
     },
     getData(){
       let _this = this;
-      _this.$http.get('do/comment/getGameComment',{
+      _this.$http.get('/do/comment/getGameComment',{
         params: {
           page:_this.page,
           page_size:_this.page_size,
@@ -113,13 +123,19 @@ export default {
         }
       }).then((res)=>{
 
-        _this.comment =_this.game.comment(res.data);
+        _this.comment =_this.comment.concat(res.data);
       },(err)=>{
         console.log(err);
       })
     },
-
-
+    insertComment(){
+      var obj={'user_id':this.$cookies.get("user_id"),'game_id':this.$cookies.get("game_id"),'content':this.newcomment}
+      this.axios.post("/do/comment/insertGameComment",obj).then(res=>{
+        if (res.data){
+          this.$router.go(0)
+        }
+      })
+    },
   }
 }
 
@@ -129,18 +145,23 @@ export default {
 <style scoped>
 .singleGame{
   background-image: url("../img/bak.png");
-  height: 1080px;
-  width: 1920px;
+  background-repeat: repeat-y;
+  min-height: 94%;
+  min-width: 100%;
+  position: absolute;
+
 }
 #gameinfo{
-  position: absolute;
+  /*position: absolute;*/
+  position: relative;
   top: 10%;
   width: 70%;
   left: 15%;
 }
 #comment{
   background-color: #2c3e50;
- position: absolute;
+ /*position: absolute;*/
+  position: relative;
   top: 32%;
   left: 15%;
   width: 70%;

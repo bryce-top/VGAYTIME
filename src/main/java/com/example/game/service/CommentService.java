@@ -8,15 +8,19 @@ import java.util.List;
 
 @Service
 public class CommentService {
+    @Resource
     private CommentMapper mapper;
     public List<Comment> getGameComment(int page,int page_size,int game_id){
+        System.out.println("进入getGameCommentService");
         List<Comment> list=new ArrayList<Comment>();
         int fo=page*page_size;
         int to=page_size;
         list= mapper.getGameComment(fo,to,game_id);
+
         return list;
     }
     public boolean insertComment(Comment comment){
+        System.out.println("进入insertCommentService");
         if(mapper.insertComment(comment)){
             return true;
         }else return false;

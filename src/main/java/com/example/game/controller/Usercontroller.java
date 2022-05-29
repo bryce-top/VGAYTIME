@@ -28,7 +28,7 @@ public class Usercontroller {
 
 
     @PostMapping("/login")
-    public Boolean loginCheck(@Param("account") String account, @Param("password") String password){
+    public int loginCheck(@Param("account") String account, @Param("password") String password){
         System.out.println("查询用户登录信息");
         System.out.println(account+"  "+password);
         return service.loginCheck(account, password);

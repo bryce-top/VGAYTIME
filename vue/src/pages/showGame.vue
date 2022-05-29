@@ -60,7 +60,7 @@ export default {
         if (res.data!=''){
               this.page=0
               this.$cookies.set("game",name,"1h")
-              this.$cookies.set("game_id",this.$route.query.id,"1h")
+
               this.game=[]
               this.getData()
               this.reload()
@@ -73,6 +73,8 @@ export default {
     }
     },
     showGame(id){
+
+      this.$cookies.set("game_id",id,"1h")
       this.$router.push({path: "/singleGame",query: {id:id}});
     },
     lazyLoading () {
