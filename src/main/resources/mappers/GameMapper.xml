@@ -6,9 +6,15 @@
 
     <select id="selectAll" resultType="com.example.game.entity.Game">
         select
-            id, name, company
+            *
         from gameinfo
 
+    </select>
+    <select id="uncheckGame" resultType="com.example.game.entity.Game">
+        select
+            *
+        from gameinfo
+        where `check`=false
     </select>
     <select id="findGamebytype" resultType="com.example.game.entity.Game">
         select
@@ -36,8 +42,8 @@
 
     </insert>
     <select id="check" resultType="com.example.game.entity.Game">
-        update game
-        set status = true
+        update gameinfo
+        set `check` = true
         where id = #{id}
     </select>
     <select id="findTotal" resultType="int">

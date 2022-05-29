@@ -5,7 +5,35 @@ public class Game {
     private String company;
     private int id;
     boolean status;
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(String dimension) {
+        this.dimension = dimension;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     private String content;
+    private String region;
+    private String dimension;
+    private String type;
 
     public void setContent(String content) {
         this.content = content;

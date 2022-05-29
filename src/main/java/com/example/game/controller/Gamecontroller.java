@@ -52,6 +52,12 @@ public class Gamecontroller {
         System.out.println(name);
         return service.findTotal(name);
     }
+    @RequestMapping("/uncheckGame")
+    public List<Game> uncheckGame(){
+        List<Game> list=new ArrayList<Game>();
+        list=service.uncheckGame();
+        return list;
+    }
 
 
 

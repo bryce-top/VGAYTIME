@@ -7,6 +7,7 @@ import java.util.List;
 @Mapper
 public interface GameMapper {
     public List<Game> selectAll();
+    public List<Game> uncheckGame();
     public List<Game> findGamebytype(@Param("type")String type);
     public List<Game> findGamebyname(@Param("fo")int fo,@Param("to")int to,@Param("name")String name);
     public Boolean insertGame(@Param("game")Game game);

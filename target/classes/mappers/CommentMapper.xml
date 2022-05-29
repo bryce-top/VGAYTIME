@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.game.mapper.CommentMapper" >
+
+    <select id="getGameComment" resultType="com.example.game.entity.Comment">
+        select *
+        from comment where game_id=#{game_id}
+        limit #{fo},#{to}
+    </select>
+    <insert id="insertComment" parameterType="com.example.game.entity.Comment">
+        insert into comment
+            (game_id,user_id,content) values
+        (#{comment.game_id},#{comment.user_id},#{comment.content})
+    </insert>
+    <select id="getTotal" resultType="int">
+        select count(id) from comment
+        where game_id=#{game_id}
+    </select>
+
+</mapper>
