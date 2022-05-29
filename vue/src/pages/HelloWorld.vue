@@ -43,8 +43,57 @@
     </div>
 
     <div id="building3">
-      <h1>玩家之声</h1>
+      <div id="title3">
+        <h1>新闻资讯</h1>
       </div>
+      <el-card class="box-card">
+        <div slot="header" class="clearfix" >
+          <span style="color:whitesmoke">来自VGTIME</span>
+          <el-button style="float: right; padding: 3px 0" type="text">转到</el-button>
+        </div>
+
+        <el-card shadow="hover" class="news" >
+          <img src="https://img01.vgtime.com/game/cover/2022/05/27/220527220827554_u8855.jpg" style="text-align: center;width:96%;height: 54%">
+          <br><br>
+          <a class="newsContent" href="https://www.vgtime.com/topic/1169948.jhtml" target="_blank">新一期索尼State of Play将于6月3日播出</a>
+        </el-card>
+
+        <el-card shadow="hover" class="news" style="left:39%">
+          <img src="https://img01.vgtime.com/game/cover/2022/05/28/220528101124624_u524.jpg" style="margin: auto;width:96%;height: 54%">
+          <br><br>
+          <a class="newsContent" href="https://www.vgtime.com/topic/1169983.jhtml" target="_blank">《星球大战 绝地：幸存者》公开 2023年发售</a>
+        </el-card>
+
+        <el-card shadow="hover" class="news" style="left:75%">
+          <img src="https://img01.vgtime.com/game/cover/2022/05/27/220527092005666_u202875.jpg" style="margin: auto;width:96%;height: 54%">
+          <br><br>
+          <a class="newsContent" href="https://www.vgtime.com/topic/1169873.jhtml" target="_blank">CDPR最新动向：《巫师》新作已开启前期制作</a>
+        </el-card>
+
+        <el-card shadow="hover" class="news" style="top:57%">
+          <img src="https://img01.vgtime.com/game/cover/2022/05/27/220527000628797_u524.jpg" style="margin: auto;width:96%;height: 54%">
+          <br><br>
+          <a class="newsContent" href="https://www.vgtime.com/topic/1169867.jhtml" target="_blank">Epic喜加三：限时一周送《生化奇兵 合集》</a>
+        </el-card>
+
+        <el-card shadow="hover" class="news" style="top:57%;left:39%">
+          <img src="https://img01.vgtime.com/game/cover/2021/03/19/210319102724478_u77470.jpg" style="margin: auto;width:96%;height: 54%">
+          <br><br>
+          <a class="newsContent" href="https://www.vgtime.com/topic/1169763.jhtml" target="_blank">夜光组新作《Forspoken》已在欧洲通过分级</a>
+        </el-card>
+
+        <el-card shadow="hover" class="news" style="top:57%;left:75%">
+          <img src="https://img01.vgtime.com/game/cover/2022/05/24/220524222720513_u8855.jpg" style="margin: auto;width:96%;height: 54%">
+          <br><br>
+          <a class="newsContent" href="https://www.vgtime.com/topic/1169659.jhtml" target="_blank">《霍格沃茨之遗》PS5特性宣传片公布 身临其境的魔法世界</a>
+        </el-card>
+
+      </el-card>
+      </div>
+
+    <div id="building4">
+
+    </div>
 
   </div>
 </template>
@@ -91,6 +140,37 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.newsContent{
+  color:whitesmoke;
+  text-align: center;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+.news{
+  width:300px;
+  height:270px;
+  position:absolute;
+  background: rgba(0,0,0,0.7);
+  border: #989595;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both
+}
+
+.box-card {
+  border: #3d1963;
+  position:absolute;
+  top:12%;
+  left:15%;
+  margin: auto;
+  width:1280px;
+  height:720px;
+  background: rgba(138,43,226,0.2);
+}
 .el-carousel__item h3 {
   color: #475669;
   font-size: 18px;
@@ -112,6 +192,13 @@ position:absolute;
   color: purple;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
+#title3{
+  position:absolute;
+  top:2%;
+  left:10%;
+  color: purple;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
 #building{
   background:url("../img/bak.png");
   width:100%;
@@ -129,6 +216,14 @@ position:absolute;
 }
 #building3{
   top: 200%;
+  background:url("../img/bak.png");
+  width:100%;
+  height:100%;
+  position:absolute;
+  background-size:100% 100%;
+}
+#building4{
+  top: 300%;
   background:url("../img/bak.png");
   width:100%;
   height:100%;
