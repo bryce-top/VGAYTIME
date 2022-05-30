@@ -23,32 +23,17 @@
         /></router-link>
       <el-menu-item index="/">首页</el-menu-item>
       <el-menu-item index="/allGame" >所有游戏</el-menu-item>
+      <el-menu-item index="/test">测试</el-menu-item>
       <el-submenu index="2">
         <template #title>游戏分类</template>
         <el-menu-item index="/showGame?type=竞技">竞技</el-menu-item>
         <el-menu-item index="/showGame?type=射击">射击</el-menu-item>
         <el-menu-item index="/showGame?type=角色扮演">角色扮演</el-menu-item>
       </el-submenu>
+
       <el-menu-item index="" @click="changeUser">{{ sta }}</el-menu-item>
       <el-menu-item index="" @click="userHome">{{ userhome }}</el-menu-item>
-      <div class="right">
-        <div class="login" v-show="noLogin">
-          <el-submenu index="5">
-            <template #title>
-              <img
-                src="https://sanegame.oss-cn-hangzhou.aliyuncs.com/n7efKzPzaW.png"
-                style="width: 15%; margin-right: 10%"
-                alt=""
-              />登录</template
-            >
-            <router-link to="/register"
-            ><el-menu-item index="5-1">账号注册</el-menu-item></router-link
-            >
-            <router-link to="/login">
-              <el-menu-item index="5-2">立即登录</el-menu-item></router-link
-            >
-          </el-submenu>
-        </div>
+
         <el-col id="search" :span="6" style="float:right;margin-right: 5%;width: 270px; margin-top: 10px; margin-bottom: 5px" >
           <el-input
             type="text"
@@ -59,7 +44,6 @@
             @keyup.enter.native="getGame"
           ></el-input>
         </el-col>
-      </div>
     </el-menu>
   </div>
 </template>

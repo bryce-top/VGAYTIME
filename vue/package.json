@@ -21,6 +21,7 @@
     "qs": "^6.10.3",
     "vue": "^2.5.2",
     "vue-axios": "^3.4.1",
+    "vue-concise-slider": "^4.2.5",
     "vue-cookie": "^1.1.4",
     "vue-cookies": "^1.8.1",
     "vue-router": "^3.0.1",

@@ -9,6 +9,8 @@ import singleGame from "../pages/singleGame"
 import showGame from "../pages/showGame"
 import admin from "../pages/admin"
 import userHome from "../pages/userHome";
+import test from "../pages/test"
+import addGame from "../pages/addGame";
 Vue.use(Router)
 
 
@@ -16,6 +18,12 @@ export default new Router({
   mode:'history',
   routes: [
 
+
+    {
+      path: '/test',
+      name: 'test',
+      component: test
+    },
     {
       path: '/',
       name: 'HelloWorld',
@@ -60,6 +68,11 @@ export default new Router({
       path:'/userHome',
       name:'userHome',
       component:userHome
+    },
+    {
+      path:'/addGame',
+      name:'addGame',
+      component:addGame
     }
 
   ]
