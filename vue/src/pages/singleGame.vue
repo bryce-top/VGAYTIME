@@ -211,11 +211,17 @@
 import headbar from '@/pages/header';
 
 export default {
-  el: '#app',
+  name: "singleGame",
+
   created() {
     if (!this.$cookies.isKey('account')){
       this.$router.push("/login")
     }
+    this.imgArray=[
+      require('../img/gameImg/'+''+this.$cookies.get('game_id')+''+'/1.jpg'),
+      require('../img/gameImg/'+''+this.$cookies.get('game_id')+''+'/2.jpg'),
+      require('../img/gameImg/'+''+this.$cookies.get('game_id')+''+'/3.jpg'),
+      require('../img/gameImg/'+''+this.$cookies.get('game_id')+''+'/4.jpg'),]
   },
   mounted() {
     this.search();
@@ -302,12 +308,7 @@ export default {
       page_count: 10,
       comment:[],
       newcomment:'',
-      imgArray: [
-        require('../img/gameImg/'+''+1+''+'/1.jpg'),
-        require('../img/gameImg/'+''+1+''+'/2.jpg'),
-        require('../img/gameImg/'+''+1+''+'/3.jpg'),
-        require('../img/gameImg/'+''+1+''+'/4.jpg'),
-      ],
+      imgArray: [],
       List : [
         {
           html: 'slider1',

@@ -28,4 +28,12 @@ public class CommentService {
     public int getTotal(String id){
         return mapper.getTotal(id);
     }
+    public boolean addStar(int id){
+        return mapper.addStar(id);
+    }
+    public boolean deleteComment(int id){
+        System.out.println("进入delete comment Service");
+        mapper.deleteComment(id);
+        return true;
+    }
 }

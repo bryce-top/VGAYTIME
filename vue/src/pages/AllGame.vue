@@ -2,10 +2,10 @@
   <div id="building">
   <div>
   <headbar />
-    <div v-for="item in game" @click="getGame(item.id)">
+    <div v-for="(item,index) in game" @click="getGame(item.id)">
     <el-card shadow="hover" class="news"  >
       <p>{{item.name}}</p>
-      <img src="https://img01.vgtime.com/game/cover/2022/05/27/220527220827554_u8855.jpg" style="text-align: center;width:96%;height: 54%">
+      <img :src="findImg(item.id)" style="text-align: center;width:96%;height: 54%" >
       <br><br>
      <p>{{item.company}}</p>
     </el-card>
@@ -26,6 +26,7 @@ export default {
       game:[],
       activeName: 'first',
       tabPosition: 'left',
+      img:''
     }
   },
 
@@ -37,6 +38,7 @@ export default {
     if (!this.$cookies.isKey('account')){
       this.$router.push("/login")
     }
+
   },
   methods: {
     handleClick(tab, event) {
@@ -45,6 +47,12 @@ export default {
     getGame(id){
       this.$cookies.set("game_id",id,"1h")
       this.$router.push({path: "/singleGame",query: {id:id}});
+    },
+    findImg(id){
+      console.log(id);
+      var ids=id.toString()
+      return require('../img/gameImg/'+ids+'/1.jpg');
+
     }
   }
 

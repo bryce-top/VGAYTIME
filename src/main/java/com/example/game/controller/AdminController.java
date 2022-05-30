@@ -3,16 +3,18 @@ package com.example.game.controller;
 import com.example.game.entity.Administrator;
 import com.example.game.entity.Game;
 import com.example.game.service.AdminService;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 @RestController
 @RequestMapping(value = "/do/admin")
 public class AdminController {
-    @Autowired
+    @Resource
     private AdminService service;
 
     @RequestMapping(value = "/adminLogin", method = RequestMethod.POST)

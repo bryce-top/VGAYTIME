@@ -4,7 +4,7 @@ import com.example.game.entity.Game;
 import com.example.game.entity.User;
 import com.example.game.service.UserService;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

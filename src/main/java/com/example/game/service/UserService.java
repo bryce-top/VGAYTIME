@@ -3,7 +3,7 @@ package com.example.game.service;
 import com.example.game.entity.User;
 import com.example.game.mapper.UserMapper;
 import com.sun.org.apache.bcel.internal.generic.NEW;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import com.example.game.DAO.SnowflakeIdWorker;
 import javax.annotation.Resource;
