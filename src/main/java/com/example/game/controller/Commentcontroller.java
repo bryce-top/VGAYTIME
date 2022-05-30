@@ -17,6 +17,9 @@ public class Commentcontroller {
     @GetMapping("/getGameComment")
     public List<Comment> getGameComment( int page,int page_size,int game_id){
         System.out.println("getcommentControl");
+        System.out.println(page);
+        System.out.println(page_size);
+        System.out.println(game_id);
         List<Comment> list= service.getGameComment(page, page_size, game_id);
         return list;
     }
