@@ -1,4 +1,5 @@
 <template>
+  <div id="building">
   <div id="login">
     <headbar />
     <div id="poem" >
@@ -28,7 +29,7 @@
     </div>
   </div>
 
-
+  </div>
 </template>
 
 <script>
@@ -91,6 +92,13 @@ export default {
 
 
 <style type="text/css">
+#building{
+  background:url("../img/bak.png");
+  width:100%;
+  height:100%;
+  position:fixed;
+  background-size:100% 100%;
+}
 #poem{
   text-align: left;
   left: 5%;

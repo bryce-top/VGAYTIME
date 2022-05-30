@@ -1,7 +1,7 @@
 <template>
-  <div style="background-color: #011627;margin-top: -0.7rem;">
+  <div id="building" style="margin-top: 0px;">
     <headbar />
-    <GuideLine></GuideLine>
+    <el-button round @click="back" style="background: rgba(255,255,255,0.3);position: absolute;top:15%;left:8%">返回</el-button>
     <el-row :gutter="10" >
       <el-col :xs="0" :sm="1" :md="2" :lg="3" :xl="2"><div class="grid-content "></div></el-col>
       <el-col :xs="14" :sm="13" :md="12" :lg="11" :xl="12">
@@ -11,40 +11,12 @@
             <h1 style="font-size: 500%;color: whitesmoke">{{ gamename }}</h1>
           </div>
           <br />
-          <el-carousel height="10rem">
-            <el-carousel-item>
-              <!-- <h3 class="small">{{ item }}</h3> -->
-              <video id="bgvid" src="../img/game1.jpg" autoplay="autoplay"
-                     loop="loop" muted="muted"><source src="image/star.mp4" type="video/mp4"></video>
+          <el-carousel indicator-position="outside" height="500px" interval="5000">
+            <el-carousel-item v-for="item in imgArray" :key="item">
+              <img :src="item" class="rightImg">
             </el-carousel-item>
           </el-carousel>
-          <!-- 				<el-carousel height="6rem">
-                        <el-carousel-item v-for="(item,index) in List" :key="index" :style="item.style">
-                          {{item.html}}
-                        </el-carousel-item>
-                  </el-carousel> -->
-          <slider ref="slider" :options="options" @slide='slide' @tap='onTap'>
-            <!-- slideritem wrapped package with the components you need -->
-            <slideritem v-for="(item,index) in List" :key="index" :style="item.style"></slideritem>
-            <!-- Customizable loading -->
-            <div slot="loading"></div>
-          </slider>
 
-          <el-col :span="24">
-            <el-card shadow="hover" style="width: 100%;height: 1.5rem;font-size: 0.5rem;text-align: left;
-				 background-image: url(../img/game1.jpg);">
-              在 Steam 上查看 “Tomb Raider” 全系列作品
-            </el-card><br /><br /><br />
-            <el-card shadow="hover" style="width: 100%;height: 1.5rem;font-size: 0.5rem;background: #67C23A;
-				 text-align: left;">
-              下载 Shadow of the Tomb Raider Demo
-            </el-card><br /><br /><br />
-            <el-card shadow="hover" style="width: 100%;height: 3rem;font-size: 0.5rem;text-align: left;
-				 background-image: url(../img/game1.jpg);">
-              购买 Tomb Raider Collection 捆绑包
-              <p style="font-size: 0.3rem;">购买此捆绑包，所有 4 个项目立省 46%！</p>
-            </el-card><br /><br /><br />
-          </el-col>
           <!-- <el-button type="info" plain style="width: 100%;height: 1.5rem;font-size: 0.5rem;text-align: left;
           background-image: url(../../../static/image/tomb2.jpg);">在 Steam 上查看 “Tomb Raider” 全系列作品</el-button>
           <br /><br /><br /> -->
@@ -140,15 +112,31 @@
             </el-tabs>
             <div style="height: 3rem;"></div>
           </div>
+          <div id="comment">
+            <h1 style="color: white">评论</h1>
+            <b-input-group prepend="评论" class="mt-3">
+              <b-form-input v-model="newcomment"></b-form-input>
+              <b-input-group-append>
+                <b-button variant="info" @click="insertComment()">发表</b-button>
+              </b-input-group-append>
+            </b-input-group>
+            <hr class="my-4">
+            <div id="singlecomment" v-for="item in comment" >
+              <b-list-group  >
+                <b-list-group-item style="background:rgba(138,43,226,0.2);color:whitesmoke;border-bottom-color: whitesmoke"><p style="font-size: small"> {{ item.username }}</p><p style="color: white">{{item.content}}</p><v-icon>
+                  {{ icon }}</v-icon> </b-list-group-item>
+
+              </b-list-group>
+            </div>
+          </div>
         </div>
       </el-col>
       <el-col :xs="10" :sm="9" :md="8" :lg="7" :xl="8"><div class="grid-content ">
         <div align="center" style="margin-top: 1.2rem;">
-          <el-button type="primary" plain style="width: 3rem;height: 0.8rem;font-size: 0.3rem;background: #434953;color: #67c1f5;">社区中心</el-button><br /><br />
           <div style="width: 80%;background: url(../img/game1.jpg)no-repeat; background-size: 100% auto;height: 3rem" align="center" >
           </div>
           <div class="GameText">
-            <p>劳拉·克劳馥一路狂奔，拯救世界免遭玛雅预言中的天灾摧毁，她终将迎接命运，成长为命中注定的古墓侠盗。</p>
+            <p>{{gameinfo}}</p>
             <div class="GameInfo">
               <a>最近评测：&nbsp;&nbsp;&nbsp;&nbsp;<font color="#54a5d4">特别好评</font> </a>
             </div><br />
@@ -156,22 +144,15 @@
               <a>全部评测：&nbsp;&nbsp;&nbsp;&nbsp;<font color="#54a5d4">特别好评</font> </a>
             </div><br />
             <div class="GameInfo">
-              <a>发行日期：&nbsp;&nbsp;&nbsp;&nbsp;<font color="">2018年9月15日</font> </a>
-            </div><br />
-            <div class="GameInfo">
-              <a>开发商：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#54a5d4">Eidos-Montréal, Crystal Dynamics</font> </a>
-            </div><br />
-            <div class="GameInfo">
-              <a>发行商：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#54a5d4">Square Enix, Feral Interactive (Mac)</font> </a>
+              <a>开发商：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#54a5d4">{{company}}</font> </a>
             </div><br />
             <div class="GameInfo">
               <a>该产品的热门用户自定义标签：</a><br /><br />
               <el-row type="flex" class="row-bg">
-                <el-col :span="4"><div class="grid-content"><el-button type="primary">{{type}}</el-button></div></el-col>
-                <el-col :span="4"><div class="grid-content"><el-button type="primary">动作</el-button></div></el-col>
-                <el-col :span="6"><div class="grid-content"><el-button type="primary">女性主角</el-button></div></el-col>
+                <el-col :span="9"><div class="grid-content"><el-button type="primary">{{type}}</el-button></div></el-col>
+                <el-col :span="5"><div class="grid-content"><el-button type="primary">{{dimension}}</el-button></div></el-col>
                 <el-col :span="4"><div class="grid-content"><el-button type="primary">单人</el-button></div></el-col>
-                <el-col :span="6"><div class="grid-content"><el-button type="primary">开放世界</el-button></div></el-col>
+                <el-col :span="6"><div class="grid-content"><el-button type="primary">摄影游戏</el-button></div></el-col>
               </el-row>
             </div>
             <el-col :span="24">
@@ -180,10 +161,10 @@
               </el-card>
               <el-card shadow="hover" style="background: #14131a;border: 0rem;">
                 <div class="AskInfo">
-                  <p>基于您的游戏、好友以及您关注的鉴赏家，登录以查看您是否有可能喜欢这个内容的原因。</p>
+                  <p>为这款游戏点个赞。</p>
                   <el-row type="flex" class="row-bg" style="font-size: 0.3rem;">
-                    <el-col :span="24"><div class="grid-content"><el-button type="primary" plain style="font-size: 0.3rem;background: #434953;color: #67c1f5;">登陆</el-button>
-                      或者<el-button type="primary" plain style="font-size: 0.3rem;background: #434953;color: #67c1f5;">在STEAM打开</el-button></div></el-col>
+                    <el-col :span="24"><div class="grid-content"><el-button type="primary" plain style="font-size: 0.3rem;background: #434953;color: #67c1f5;">点赞</el-button>
+                      </div></el-col>
                   </el-row>
                 </div>
               </el-card><br /><br /><br />
@@ -246,6 +227,9 @@ export default {
       this.search();
     }},
   methods:{
+    back(){
+      this.$router.replace('/allGame')
+    },
 
     search(){
       this.$route.query.id = 1;
@@ -258,6 +242,7 @@ export default {
             this.gameinfo=jsonObj[0].content
             this.company=jsonObj[0].company
             this.type=jsonObj[0].type
+            this.dimension=jsonObj[0].dimension
             this.axios.get("/do/comment/getTotal?game_id="+this.$cookies.get("game_id")).then(res=>{
               if(res.data)
                 this.page_count=res.data
@@ -285,7 +270,8 @@ export default {
         params: {
           page:_this.page,
           page_size:_this.page_size,
-          game_id:this.$cookies.get("game_id")
+          // game_id:this.$cookies.get("game_id")
+          game_id:1
         }
       }).then((res)=>{
 
@@ -295,7 +281,8 @@ export default {
       })
     },
     insertComment(){
-      var obj={'user_id':this.$cookies.get("user_id"),'game_id':this.$cookies.get("game_id"),'content':this.newcomment}
+      // var obj={'user_id':this.$cookies.get("user_id"),'game_id':this.$cookies.get("game_id"),'content':this.newcomment}
+      var obj={'user_id':this.$cookies.get("user_id"),'game_id':1,'content':this.newcomment}
       this.axios.post("/do/comment/insertGameComment",obj).then(res=>{
         if (res.data){
           this.$router.go(0)
@@ -309,11 +296,18 @@ export default {
       company:'',
       gameinfo:'',
       type:'',
+      dimension:'',
       page: 0,
       page_size: 15,
       page_count: 10,
       comment:[],
       newcomment:'',
+      imgArray: [
+        require('../img/game1.jpg'),
+        require('../img/game2.jpg'),
+        require('../img/game3.jpg'),
+        require('../img/game4.jpg'),
+      ],
       List : [
         {
           html: 'slider1',
@@ -546,12 +540,20 @@ export default {
   width: 70%;
   left: 15%;
 }
+#building{
+  background:url("../img/bak.png");
+  width:100%;
+  /*height:100%;*/
+  /*position:relative;*/
+  background-repeat: repeat-y;
+  /*background-size:100% 100%;*/
+}
 #comment{
-  background-color: #2c3e50;
+  background: rgba(138,43,226,0);
   /*position: absolute;*/
   position: relative;
   top: 32%;
-  left: 15%;
-  width: 70%;
+  left: 0%;
+  width: 100%;
 }
 </style>
