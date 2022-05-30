@@ -34,9 +34,9 @@ export default {
       var jsonObj =JSON.parse(JSON.stringify(res.data));
       this.game=res.data;
     })
-    // if (!this.$cookies.isKey('account')){
-    //   this.$router.push("/login")
-    // }
+    if (!this.$cookies.isKey('account')){
+      this.$router.push("/login")
+    }
   },
   methods: {
     handleClick(tab, event) {

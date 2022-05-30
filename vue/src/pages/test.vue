@@ -1,7 +1,7 @@
 <template>
   <div id="building" style="margin-top: 0px;">
     <headbar />
-    <el-button round @click="back" style="background: rgba(255,255,255,0.3);position: absolute;top:15%;left:8%">返回</el-button>
+    <el-button round @click="back" style="background: rgba(255,255,255,0.3);position: absolute;top:15%;left:8%;z-index:999">返回</el-button>
     <el-row :gutter="10" >
       <el-col :xs="0" :sm="1" :md="2" :lg="3" :xl="2"><div class="grid-content "></div></el-col>
       <el-col :xs="14" :sm="13" :md="12" :lg="11" :xl="12">
@@ -209,7 +209,7 @@
 
 <script>
 import headbar from '@/pages/header';
-import { slider, slideritem } from 'vue-concise-slider'
+
 export default {
   el: '#app',
   created() {
@@ -232,7 +232,7 @@ export default {
     },
 
     search(){
-      this.$route.query.id = 1;
+
       if(this.$route.query.id){
         var id=this.$route.query.id
         this.axios.get("/do/game/findGamebyid?id="+id,).then(res=>{
@@ -270,8 +270,8 @@ export default {
         params: {
           page:_this.page,
           page_size:_this.page_size,
-          // game_id:this.$cookies.get("game_id")
-          game_id:1
+          game_id:this.$cookies.get("game_id")
+
         }
       }).then((res)=>{
 
@@ -281,8 +281,8 @@ export default {
       })
     },
     insertComment(){
-      // var obj={'user_id':this.$cookies.get("user_id"),'game_id':this.$cookies.get("game_id"),'content':this.newcomment}
-      var obj={'user_id':this.$cookies.get("user_id"),'game_id':1,'content':this.newcomment}
+      var obj={'user_id':this.$cookies.get("user_id"),'game_id':this.$cookies.get("game_id"),'content':this.newcomment}
+      // var obj={'user_id':this.$cookies.get("user_id"),'game_id':1,'content':this.newcomment}
       this.axios.post("/do/comment/insertGameComment",obj).then(res=>{
         if (res.data){
           this.$router.go(0)
@@ -303,10 +303,10 @@ export default {
       comment:[],
       newcomment:'',
       imgArray: [
-        require('../img/game1.jpg'),
-        require('../img/game2.jpg'),
-        require('../img/game3.jpg'),
-        require('../img/game4.jpg'),
+        require('../img/gameImg/'+''+1+''+'/1.jpg'),
+        require('../img/gameImg/'+''+1+''+'/2.jpg'),
+        require('../img/gameImg/'+''+1+''+'/3.jpg'),
+        require('../img/gameImg/'+''+1+''+'/4.jpg'),
       ],
       List : [
         {
@@ -441,8 +441,7 @@ export default {
     }
   },
   components: {
-    slider,
-    slideritem,
+
     headbar
   }
 }
@@ -555,5 +554,9 @@ export default {
   top: 32%;
   left: 0%;
   width: 100%;
+}
+.rightImg {
+  width:100%;
+  height: 100%;
 }
 </style>

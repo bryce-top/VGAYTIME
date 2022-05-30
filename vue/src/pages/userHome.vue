@@ -49,7 +49,7 @@
           <b-button @click="changeInfo">提交</b-button>
         </b-form-group>
       </b-card>
-      <router-link :to="{path:'/addGame'}">添加游戏</router-link>
+
     </div>
   </div>
 </template>
