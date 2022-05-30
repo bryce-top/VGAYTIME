@@ -1,7 +1,8 @@
 <template>
+  <div id="building">
   <div>
     <headbar />
-    <div id="form">
+    <div id="form" style="margin: auto;">
       <b-card bg-variant="light">
         <b-form-group
           label-cols-lg="3"
@@ -49,8 +50,8 @@
           <b-button @click="changeInfo">提交</b-button>
         </b-form-group>
       </b-card>
-      <router-link :to="{path:'/addGame'}">添加游戏</router-link>
     </div>
+  </div>
   </div>
 </template>
 
@@ -110,9 +111,17 @@ export default {
 
 <style scoped>
 #form{
+  position: absolute;
   width: 60%;
   height: 100%;
-  float: top;
+  top:20%;
+  left:20%;
 }
-
+#building{
+  background:url("../img/bak.png");
+  width:100%;
+  height:100%;
+  position:fixed;
+  background-size:100% 100%;
+}
 </style>
