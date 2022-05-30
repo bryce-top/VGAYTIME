@@ -11,4 +11,5 @@ public interface AdminService {
 
     boolean updatePass(Administrator admin);
 
+    int totalUncheck();
 }

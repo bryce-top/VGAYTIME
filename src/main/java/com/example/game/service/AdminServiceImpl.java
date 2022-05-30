@@ -49,4 +49,15 @@ public class AdminServiceImpl implements AdminService{
         }
         return flag;
     }
+
+    @Override
+    public int totalUncheck(){
+        try{
+            System.out.println("in totalUncheck service");
+            adminMapper.totalUncheck();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return adminMapper.totalUncheck();
+    }
 }

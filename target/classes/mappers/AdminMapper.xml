@@ -15,4 +15,10 @@
         set password=#{newpass}
         where email=#{email}
     </update>
+    <select id="totalUncheck" resultType="int">
+        select
+            count(*)
+        from gameinfo
+        where `check` = false
+    </select>
 </mapper>

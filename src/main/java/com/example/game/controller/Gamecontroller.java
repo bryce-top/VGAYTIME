@@ -36,7 +36,7 @@ public class Gamecontroller {
         return list;
     }
     @PostMapping("/insertGame")
-    public Boolean inserGame(@Param("game")Game game){
+    public Boolean inserGame(@RequestBody Game game){
 
         return service.insertGame(game);
     }
