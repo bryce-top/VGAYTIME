@@ -25,10 +25,10 @@
         </b-input-group-append>
       </b-input-group>
       <hr class="my-4">
-    <div id="singlecomment" v-for="item in comment" >
+    <div id="singlecomment" v-for="item in comment"  >
       <b-list-group  >
-        <b-list-group-item style="background-color: #2c3e50;"><p style="font-size: small"> {{ item.username }}</p><p style="color: white">{{item.content}}</p><v-icon>
-          {{ icon }}</v-icon> </b-list-group-item>
+        <b-list-group-item style="background-color: #2c3e50;"><p style="font-size: small"> {{ item.username }}</p><p style="color: white">{{item.content}}</p>
+          <v-icon @click="addStar(item.id)">{{ icon }} </v-icon><p style="position: absolute;top: 85px;left: 150px">{{item.star}}</p> </b-list-group-item>
 
       </b-list-group>
     </div>
@@ -45,6 +45,7 @@ export default {
     headbar
   },
   created() {
+
     if (!this.$cookies.isKey('account')){
       this.$router.push("/login")
     }
@@ -93,14 +94,20 @@ export default {
 
     },
     lazyLoading () {
-      const scrollTop = document.documentElement.scrollTop
-      const clientHeight = document.documentElement.clientHeight
-      const scrollHeight = document.documentElement.scrollHeight
+      // let self=this
+      // let Scroll=e.target
+      // let scrollHeight=Scroll.scrollHeight-Scroll.clientHeight
+      // self.scrollTop=Scroll.scrollTop
+      let scrollTop = document.documentElement.scrollTop
+      let clientHeight = document.documentElement.clientHeight
+      let scrollHeight = document.documentElement.scrollHeight
 
       if (scrollTop + clientHeight >= scrollHeight) {
 
         this.page++
-        if (this.page * this.page_size > this.page_count) return
+        if (this.page * this.page_size > this.page_count)
+          return
+        else
         this.getData()
       }
     },
@@ -127,6 +134,11 @@ export default {
         }
       })
     },
+    addStar(id){
+      this.axios.get("/do/comment/addStar?id="+id).then(res=>{
+        this.$set(this.comment[id-1].star=this.comment[id-1].star+1)
+      })
+    }
   }
 }
 

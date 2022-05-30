@@ -28,4 +28,9 @@ public class CommentService {
     public int getTotal(String id){
         return mapper.getTotal(id);
     }
+    public boolean addStar(int id){
+        System.out.println("进入addStarService");
+        mapper.addStar(id);
+        return true;
+    }
 }

@@ -29,4 +29,9 @@ public class Commentcontroller {
     public int getTotal(String game_id){
         return service.getTotal(game_id);
     }
+    @GetMapping("/addStar")
+    public boolean addStar( int id){
+        System.out.println("addStarControl");
+        return service.addStar(id);
+    }
 }

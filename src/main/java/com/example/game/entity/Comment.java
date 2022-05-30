@@ -7,6 +7,15 @@ public class Comment {
     private String content;
     private String time;
     private String username;
+    private int star;
+
+    public int getStar() {
+        return star;
+    }
+
+    public void setStar(int star) {
+        this.star = star;
+    }
 
     public String getUsername() {
         return username;

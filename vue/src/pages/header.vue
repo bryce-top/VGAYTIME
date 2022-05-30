@@ -23,7 +23,7 @@
         /></router-link>
       <el-menu-item index="/">首页</el-menu-item>
       <el-menu-item index="/allGame" >所有游戏</el-menu-item>
-      <el-menu-item index="/test">测试</el-menu-item>
+      <el-menu-item v-show="add" index="/addGame">添加游戏</el-menu-item>
       <el-submenu index="2">
         <template #title>游戏分类</template>
         <el-menu-item index="/showGame?type=竞技">竞技</el-menu-item>
@@ -32,7 +32,7 @@
       </el-submenu>
 
       <el-menu-item index="" @click="changeUser">{{ sta }}</el-menu-item>
-      <el-menu-item index="" @click="userHome">{{ userhome }}</el-menu-item>
+      <el-menu-item v-show="userhome" index="" @click="userHome">个人信息</el-menu-item>
 
         <el-col id="search" :span="6" style="float:right;margin-right: 5%;width: 270px; margin-top: 10px; margin-bottom: 5px" >
           <el-input
@@ -59,7 +59,8 @@ export default {
       loading: false,
       kb_content:'',
       user:'登录',
-      userhome:''
+      userhome:false,
+      add:false
     }
   },
   mounted() {
@@ -74,7 +75,7 @@ export default {
     if(!this.$cookies.isKey('account')){
       this.sta='登录'
       // this.$router.push('/login');
-    }else {this.sta='退出登录',this.userhome='个人信息'}
+    }else {this.sta='退出登录',this.userhome=true,this.add=true}
   },
 
   methods:{
