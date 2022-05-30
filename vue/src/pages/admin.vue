@@ -55,6 +55,12 @@
                         <v-list-item-title >游戏管理</v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
+                    <v-list-item @click="commentManage">
+                      <v-list-item-icon></v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title >评论管理</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
                     <v-list-item @click="gameCheck">
                       <v-list-item-icon></v-list-item-icon>
                       <v-list-item-content>
@@ -125,6 +131,9 @@
               <div v-if="isGameManage">
                 <gameManage />
               </div>
+              <div v-if="isCommentManage">
+                <commentManage />
+              </div>
             </v-sheet>
           </v-col>
         </v-row>
@@ -138,6 +147,7 @@ import userTable from '@/pages/userTable';
 import updatePass from "./updatePass";
 import gameCheck from "./gameCheck";
 import gameManage from "./gameManage";
+import commentManage from "./commentManage";
 export default {
   name:'admin',
   methods: {
@@ -147,6 +157,7 @@ export default {
       this.isGameCheck = false;
       this.isMyInfo = false;
       this.isWelcome = false;
+      this.isCommentManage = false;
     },
     gameManage() {
       this.isUserManage = false;
@@ -154,6 +165,7 @@ export default {
       this.isGameCheck = false;
       this.isMyInfo = false;
       this.isWelcome = false;
+      this.isCommentManage = false;
     },
     gameCheck() {
       this.isUserManage = false;
@@ -161,6 +173,7 @@ export default {
       this.isGameCheck = true;
       this.isMyInfo = false;
       this.isWelcome = false;
+      this.isCommentManage = false;
     },
     forgetPass() {
       this.isUserManage = false;
@@ -168,6 +181,7 @@ export default {
       this.isGameCheck = false;
       this.isMyInfo = true;
       this.isWelcome = false;
+      this.isCommentManage = false;
     },
     welcome() {
       this.isUserManage = false;
@@ -175,12 +189,21 @@ export default {
       this.isGameCheck = false;
       this.isMyInfo = false;
       this.isWelcome = true;
+      this.isCommentManage = false;
       this.$axios.get('/do/admin/totalUncheck')
         .then(res=> {
           console.log(res.data);
           this.number = res.data;
           console.log('555');
         })
+    },
+    commentManage(){
+      this.isUserManage = false;
+      this.isGameManage = false;
+      this.isGameCheck = false;
+      this.isMyInfo = false;
+      this.isWelcome = false;
+      this.isCommentManage = true;
     }
   },
   data() {
@@ -190,6 +213,7 @@ export default {
         isGameCheck: false,
         isMyInfo: false,
         isWelcome: true,
+        isCommentManage: false,
         email:this.$cookies.get('adminaccount'),
         users: [],
         number:''

@@ -1,5 +1,6 @@
 package com.example.game.service;
 import com.example.game.entity.Comment;
+import com.example.game.entity.Game;
 import com.example.game.mapper.CommentMapper;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
@@ -27,5 +28,10 @@ public class CommentService {
     }
     public int getTotal(String id){
         return mapper.getTotal(id);
+    }
+    public boolean deleteComment(int id){
+        System.out.println("进入delete comment Service");
+        mapper.deleteComment(id);
+        return true;
     }
 }
