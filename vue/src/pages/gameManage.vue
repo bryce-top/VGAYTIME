@@ -52,7 +52,7 @@
                     <v-col
                       cols="12"
                       sm="6"
-                      md="4"
+                      md="6"
                     >
                       <v-text-field
                         v-model="editedItem.name"
@@ -62,7 +62,7 @@
                     <v-col
                       cols="12"
                       sm="6"
-                      md="4"
+                      md="6"
                     >
                       <v-text-field
                         v-model="editedItem.type"
@@ -72,7 +72,7 @@
                     <v-col
                       cols="12"
                       sm="6"
-                      md="4"
+                      md="6"
                     >
                       <v-text-field
                         v-model="editedItem.company"
@@ -82,7 +82,7 @@
                     <v-col
                       cols="12"
                       sm="6"
-                      md="4"
+                      md="6"
                     >
                       <v-text-field
                         v-model="editedItem.region"
@@ -92,7 +92,7 @@
                     <v-col
                       cols="12"
                       sm="6"
-                      md="4"
+                      md="6"
                     >
                       <v-text-field
                         v-model="editedItem.dimension"
@@ -102,7 +102,7 @@
                     <v-col
                       cols="12"
                       sm="6"
-                      md="4"
+                      md="12"
                     >
                       <v-text-field
                         v-model="editedItem.content"
