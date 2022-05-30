@@ -25,7 +25,7 @@
             label-align-sm="right"
             label-for="nested-city"
           >
-            <b-form-input id="nested-city" v-model="user.account"></b-form-input>
+            <b-form-input id="nested-city" v-model="user.account" disabled></b-form-input>
           </b-form-group>
 
           <b-form-group
@@ -49,6 +49,7 @@
           <b-button @click="changeInfo">提交</b-button>
         </b-form-group>
       </b-card>
+      <router-link :to="{path:'/addGame'}">添加游戏</router-link>
     </div>
   </div>
 </template>
