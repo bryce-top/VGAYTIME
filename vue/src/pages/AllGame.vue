@@ -2,22 +2,11 @@
   <div id="building">
   <div>
   <headbar />
-    <el-col :span="1">
-      <el-menu
-        :mode="horizontal"
-        default-active="activeIndex2"
-        class="el-menu-demo"
-        mode="horizontal"
-        @select="handleSelect"
-        background-color="#303133"
-        text-color="#C0C4CC"
-        active-text-color="#D351E1">
-        <el-menu-item index="1">所有游戏</el-menu-item>
-        <el-menu-item index="2">动作游戏</el-menu-item>
-        <el-menu-item index="3">角色扮演</el-menu-item>
-        <el-menu-item index="4">射击游戏</el-menu-item>
-      </el-menu>
-    </el-col>
+    <el-card shadow="hover" class="news" >
+      <img src="https://img01.vgtime.com/game/cover/2022/05/27/220527220827554_u8855.jpg" style="text-align: center;width:96%;height: 54%">
+      <br><br>
+      <a class="newsContent" href="https://www.vgtime.com/topic/1169948.jhtml" target="_blank">新一期索尼State of Play将于6月3日播出</a>
+    </el-card>
   </div>
   </div>
 </template>
@@ -56,10 +45,17 @@ export default {
 
 <style scoped>
 #building{
-  /*background:url("../img/bak.png");*/
+  background:url("../img/bak.png");
   width:100%;
   height:100%;
   position:fixed;
   background-size:100% 100%;
+}
+.news{
+  width:300px;
+  height:270px;
+  position:absolute;
+  background: rgba(255,255,255,0.7);
+  border: #989595;
 }
 </style>

@@ -1,15 +1,16 @@
 <template>
   <div style="background-color: #011627;margin-top: -0.7rem;">
+    <headbar />
     <GuideLine></GuideLine>
     <el-row :gutter="10" >
       <el-col :xs="0" :sm="1" :md="2" :lg="3" :xl="2"><div class="grid-content "></div></el-col>
       <el-col :xs="14" :sm="13" :md="12" :lg="11" :xl="12">
         <div class="grid-content ">
           <br /><br />
-          <div class="ContentTitle">
-            <p><a href="#">所有游戏</a>><a href="#">冒险游戏</a>><a href="#">Tomb Raider系列</a>><a href="#">Shadow of the Tomb Raider: Definitive Edition</a></p>
-            <span>Shadow of the Tomb Raider: Definitive Edition</span>
-          </div><br />
+          <div id="gameinfo">
+            <h1 style="font-size: 500%;color: whitesmoke">{{ gamename }}</h1>
+          </div>
+          <br />
           <el-carousel height="10rem">
             <el-carousel-item>
               <!-- <h3 class="small">{{ item }}</h3> -->
@@ -68,11 +69,9 @@
             <el-divider></el-divider>
             <div style="width: 100%;height: 6rem;font-size: 0.5rem;text-align: left;
 				 background-image: url(../img/game1.jpg);"></div>
-            <p>在《Shadow of the Tomb Raider：最终版》中，探索劳拉最初为何会注定成为古墓侠盗的最终章。《Shadow of the Tomb Raider：最终版》包括主游戏、全7个DLC古墓挑战，以及所有可下载武器、装束、技能，是跟随劳拉探索命运的最终完整体验。</p>
-            <br />
-            <p>在世界上最致命的地点生存下来：征服残酷无情的丛林，并活着走出来。探索充满裂隙和幽深隧道的水下环境。</p><br />
-            <p>与丛林合而为一：火力不足、以寡敌众的劳拉，必须充分利用丛林中的环境，像美洲豹一样迅猛出击、悄然而退，使用泥浆作为伪装手段，在敌人队伍中制造恐惧，播撒混乱。</p><br />
-            <p>探索黑暗残忍的古墓：古墓变得比以往更加恐怖，需要细致谨慎的探索技术才能到达，还要以智慧破解杀机重重的谜题。</p><br /><br />
+            <p>
+              {{ gameinfo }}
+            </p>
           </div>	<br /><br />
 
           <div class="SysInfo">
@@ -139,68 +138,6 @@
                 </div>
               </el-tab-pane>
             </el-tabs>
-            <!-- <el-tabs type="border-card">
-                <el-tab-pane label="Windows" name="first">
-                <div class="SysNeed">
-                  <font color="#FFFFFF">最低配置</font></span><br />
-                  操作系统:<p>Windows 7 64 bit</p>
-                  处理器:<p>i3-3220 INTEL or AMD Equivalent</p>
-                  内存:<p>8 GB RAM</p>
-                  显卡:<p>Nvidia GTX 660/GTX 1050 or AMD Radeon HD 7770</p>
-                  DirectX 版本:<p>11</p>
-                  存储空间:<p>需要 40 GB 可用空间</p>
-                </div>
-                <div class="SysNeed">
-                  <font color="#FFFFFF">推荐配置</font></span><br />
-                  操作系统:<p>Windows 7 64 bit</p>
-                  处理器:<p>i3-3220 INTEL or AMD Equivalent</p>
-                  内存:<p>16 GB RAM</p>
-                  显卡:<p>Nvidia GTX 660/GTX 1050 or AMD Radeon HD 7770</p>
-                  DirectX 版本:<p>11</p>
-                  存储空间:<p>需要 40 GB 可用空间</p>
-                </div>
-              </el-tab-pane>
-                <el-tab-pane label="Mac OS X" name="second">
-                <div class="SysNeed">
-                  <font color="#FFFFFF">最低配置</font></span><br />
-                  操作系统:<p>macOS 10.15</p>
-                  处理器:<p>i3-3220 INTEL or AMD Equivalent</p>
-                  内存:<p>8 GB RAM</p>
-                  显卡:<p>Nvidia GTX 660/GTX 1050 or AMD Radeon HD 7770</p>
-                  DirectX 版本:<p>11</p>
-                  存储空间:<p>需要 40 GB 可用空间</p>
-                </div>
-                <div class="SysNeed">
-                  <font color="#FFFFFF">推荐配置</font></span><br />
-                  操作系统:<p>Windows 7 64 bit</p>
-                  处理器:<p>i3-3220 INTEL or AMD Equivalent</p>
-                  内存:<p>16 GB RAM</p>
-                  显卡:<p>Nvidia GTX 660/GTX 1050 or AMD Radeon HD 7770</p>
-                  DirectX 版本:<p>11</p>
-                  存储空间:<p>需要 40 GB 可用空间</p>
-                </div>
-              </el-tab-pane>
-                <el-tab-pane label="Steams OS+Linux" name="third">
-                <div class="SysNeed">
-                  <font color="#FFFFFF">最低配置</font></span><br />
-                  操作系统:<p>Windows 7 64 bit</p>
-                  处理器:<p>i3-3220 INTEL or AMD Equivalent</p>
-                  内存:<p>8 GB RAM</p>
-                  显卡:<p>Nvidia GTX 660/GTX 1050 or AMD Radeon HD 7770</p>
-                  DirectX 版本:<p>11</p>
-                  存储空间:<p>需要 40 GB 可用空间</p>
-                </div>
-                <div class="SysNeed">
-                  <font color="#FFFFFF">推荐配置</font></span><br />
-                  操作系统:<p>Windows 7 64 bit</p>
-                  处理器:<p>i3-3220 INTEL or AMD Equivalent</p>
-                  内存:<p>16 GB RAM</p>
-                  显卡:<p>Nvidia GTX 660/GTX 1050 or AMD Radeon HD 7770</p>
-                  DirectX 版本:<p>11</p>
-                  存储空间:<p>需要 40 GB 可用空间</p>
-                </div>
-              </el-tab-pane>
-              </el-tabs> -->
             <div style="height: 3rem;"></div>
           </div>
         </div>
@@ -230,7 +167,7 @@
             <div class="GameInfo">
               <a>该产品的热门用户自定义标签：</a><br /><br />
               <el-row type="flex" class="row-bg">
-                <el-col :span="4"><div class="grid-content"><el-button type="primary">冒险</el-button></div></el-col>
+                <el-col :span="4"><div class="grid-content"><el-button type="primary">{{type}}</el-button></div></el-col>
                 <el-col :span="4"><div class="grid-content"><el-button type="primary">动作</el-button></div></el-col>
                 <el-col :span="6"><div class="grid-content"><el-button type="primary">女性主角</el-button></div></el-col>
                 <el-col :span="4"><div class="grid-content"><el-button type="primary">单人</el-button></div></el-col>
@@ -290,17 +227,93 @@
 </template>
 
 <script>
-// import slider components
+import headbar from '@/pages/header';
 import { slider, slideritem } from 'vue-concise-slider'
 export default {
   el: '#app',
-  methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
+  created() {
+    if (!this.$cookies.isKey('account')){
+      this.$router.push("/login")
     }
+  },
+  mounted() {
+    this.search();
+    window.addEventListener('scroll', this.lazyLoading);
+  },
+  watch: {
+    '$route' (to, from) {
+      // 在mounted函数执行的方法，放到该处
+      this.search();
+    }},
+  methods:{
+
+    search(){
+      this.$route.query.id = 1;
+      if(this.$route.query.id){
+        var id=this.$route.query.id
+        this.axios.get("/do/game/findGamebyid?id="+id,).then(res=>{
+          var jsonObj =JSON.parse(JSON.stringify(res.data));
+          if (res.data){
+            this.gamename=jsonObj[0].name
+            this.gameinfo=jsonObj[0].content
+            this.company=jsonObj[0].company
+            this.type=jsonObj[0].type
+            this.axios.get("/do/comment/getTotal?game_id="+this.$cookies.get("game_id")).then(res=>{
+              if(res.data)
+                this.page_count=res.data
+            });
+            this.getData()
+          }
+        });}
+
+    },
+    lazyLoading () {
+      const scrollTop = document.documentElement.scrollTop
+      const clientHeight = document.documentElement.clientHeight
+      const scrollHeight = document.documentElement.scrollHeight
+
+      if (scrollTop + clientHeight >= scrollHeight) {
+
+        this.page++
+        if (this.page * this.page_size > this.page_count) return
+        this.getData()
+      }
+    },
+    getData(){
+      let _this = this;
+      _this.$http.get('/do/comment/getGameComment',{
+        params: {
+          page:_this.page,
+          page_size:_this.page_size,
+          game_id:this.$cookies.get("game_id")
+        }
+      }).then((res)=>{
+
+        _this.comment =_this.comment.concat(res.data);
+      },(err)=>{
+        console.log(err);
+      })
+    },
+    insertComment(){
+      var obj={'user_id':this.$cookies.get("user_id"),'game_id':this.$cookies.get("game_id"),'content':this.newcomment}
+      this.axios.post("/do/comment/insertGameComment",obj).then(res=>{
+        if (res.data){
+          this.$router.go(0)
+        }
+      })
+    },
   },
   data () {
     return {
+      gamename:'',
+      company:'',
+      gameinfo:'',
+      type:'',
+      page: 0,
+      page_size: 15,
+      page_count: 10,
+      comment:[],
+      newcomment:'',
       List : [
         {
           html: 'slider1',
@@ -435,7 +448,8 @@ export default {
   },
   components: {
     slider,
-    slideritem
+    slideritem,
+    headbar
   }
 }
 </script>
@@ -516,5 +530,28 @@ export default {
 }
 .el-table tr th{
   background: #000000!important;
+}
+.singleGame{
+  background-image: url("../img/bak.png");
+  background-repeat: repeat-y;
+  min-height: 94%;
+  min-width: 100%;
+  position: absolute;
+
+}
+#gameinfo{
+  /*position: absolute;*/
+  position: relative;
+  top: 10%;
+  width: 70%;
+  left: 15%;
+}
+#comment{
+  background-color: #2c3e50;
+  /*position: absolute;*/
+  position: relative;
+  top: 32%;
+  left: 15%;
+  width: 70%;
 }
 </style>
