@@ -21,7 +21,7 @@
       <div id="title2">
         <h1>玩家之声</h1>
       </div>
-        <el-carousel indicator-position="outside" height="630px" interval="1500" style="margin:auto;top:200px">
+        <el-carousel indicator-position="outside" height="630px" interval="5000" style="margin:auto;top:200px">
           <el-carousel-item v-for="(item,index) in ListCommunity" :key="index" style="background: #2c2748">
             <el-row :gutter="0">
               <el-col :span="15">
