@@ -1,79 +1,130 @@
 <template>
   <v-app id="inspire">
-    <v-app-bar
-      app
-      color="white"
-      flat
-    >
-      <v-container class="py-0 fill-height">
-        <v-avatar
-          class="mr-10"
-          color="grey darken-1"
-          size="32"
-        ></v-avatar>
-
-        <v-btn
-          v-for="link in links"
-          :key="link"
-          text
-        >
-          {{ link }}
-        </v-btn>
-
-        <v-spacer></v-spacer>
-
-        <v-responsive max-width="260">
-          <v-text-field
-            dense
-            flat
-            hide-details
-            rounded
-            solo-inverted
-          ></v-text-field>
-        </v-responsive>
-      </v-container>
-    </v-app-bar>
-
     <v-main class="grey lighten-3">
       <v-container>
         <v-row>
-          <v-col cols="2">
-            <v-sheet rounded="lg">
-              <v-list color="transparent">
-                <v-list-item
-                  v-for="n in 5"
-                  :key="n"
-                  link
-                >
-                  <v-list-item-content>
-                    <v-list-item-title>
-                      List Item {{ n }}
-                    </v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
+          <template>
+            <v-card
+              class="mx-auto"
+              width="256"
+              tile
+              dark
+            >
+              <v-navigation-drawer permanent>
 
-                <v-divider class="my-2"></v-divider>
+                <v-list>
+                  <v-list-item>
+                    <v-list-item-avatar>
+                      <v-avatar
+                        color="teal"
+                        size="56"
+                      >X</v-avatar>
+                    </v-list-item-avatar>
+                  </v-list-item>
 
-                <v-list-item
-                  link
-                  color="grey lighten-4"
+                  <v-list-item link>
+                    <v-list-item-content>
+                      <v-list-item-title class="text-h6">
+                        你好
+                      </v-list-item-title>
+                      <v-list-item-subtitle>{{email}}</v-list-item-subtitle>
+                    </v-list-item-content>
+
+                    <v-list-item-action>
+                      <v-icon>mdi-menu-down</v-icon>
+                    </v-list-item-action>
+                  </v-list-item>
+                </v-list>
+                <v-divider></v-divider>
+                <v-list
+                  nav
+                  dense
                 >
-                  <v-list-item-content>
-                    <v-list-item-title>
-                      Refresh
-                    </v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </v-list>
-            </v-sheet>
-          </v-col>
+                  <v-list-item-group
+                    color="primary"
+                  >
+                    <v-list-item @click="userManage">
+                      <v-list-item-icon></v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title >用户管理</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item @click="gameManage">
+                      <v-list-item-icon></v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title >游戏管理</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item @click="gameCheck">
+                      <v-list-item-icon></v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title >游戏审核</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item @click="forgetPass">
+                      <v-list-item-icon></v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title >修改密码</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item to="/">
+                      <v-list-item-icon></v-list-item-icon>
+                      <v-list-item-content>
+                        <v-list-item-title >返回主页</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item>
+                      <v-list-item-content>
+                        <v-list-item-title >&nbsp;</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item>
+                      <v-list-item-content>
+                        <v-list-item-title >&nbsp;</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item>
+                      <v-list-item-content>
+                        <v-list-item-title >&nbsp;</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-item-group>
+                </v-list>
+              </v-navigation-drawer>
+            </v-card>
+          </template>
 
           <v-col>
             <v-sheet
-              min-height="70vh"
               rounded="lg"
+              min-width="100%"
             >
-              <!--  -->
+              <v-alert
+                prominent
+                type="success"
+                v-if="isWelcome"
+              >
+                <v-row align="center">
+                  <v-col class="grow">
+                    开始工作吧，今天有5条未审批的游戏
+                  </v-col>
+                  <v-col class="shrink">
+                    <v-btn @click="gameCheck">审批</v-btn>
+                  </v-col>
+                </v-row>
+              </v-alert>
+              <div v-if="isUserManage">
+                <userTable/>
+              </div>
+              <div v-if="isMyInfo">
+                <updatePass />
+              </div>
+              <div v-if="isGameCheck">
+                <gameCheck />
+              </div>
+              <div v-if="isGameManage">
+                <gameManage />
+              </div>
             </v-sheet>
           </v-col>
         </v-row>
@@ -83,14 +134,53 @@
 </template>
 
 <script>
+import userTable from '@/pages/userTable';
+import updatePass from "./updatePass";
+import gameCheck from "./gameCheck";
+import gameManage from "./gameManage";
 export default {
-  data: () => ({
-    links: [
-      'Dashboard',
-      'Messages',
-      'Profile',
-      'Updates',
-    ],
-  }),
+  name:'admin',
+  methods: {
+    userManage() {
+      this.isUserManage = true;
+      this.isGameManage = false;
+      this.isGameCheck = false;
+      this.isMyInfo = false;
+      this.isWelcome = false;
+    },
+    gameManage() {
+      this.isUserManage = false;
+      this.isGameManage = true;
+      this.isGameCheck = false;
+      this.isMyInfo = false;
+      this.isWelcome = false;
+    },
+    gameCheck() {
+      this.isUserManage = false;
+      this.isGameManage = false;
+      this.isGameCheck = true;
+      this.isMyInfo = false;
+      this.isWelcome = false;
+    },
+    forgetPass() {
+      this.isUserManage = false;
+      this.isGameManage = false;
+      this.isGameCheck = false;
+      this.isMyInfo = true;
+      this.isWelcome = false;
+    }
+  },
+  data() {
+      return {
+        isUserManage: false,
+        isGameManage: false,
+        isGameCheck: false,
+        isMyInfo: false,
+        isWelcome: true,
+        email:this.$cookies.get('adminaccount'),
+        users: [],
+      }
+    },
+
 }
 </script>

@@ -21,16 +21,24 @@ public class GameService {
         list=mapper.selectAll();
         return list;
     }
+    public List<Game> uncheckGame(){
+        System.out.println("进入uncheckGameService");
+        List<Game> list= new ArrayList<Game>();
+        list=mapper.uncheckGame();
+        return list;
+    }
     public List<Game> findGamebytype(String type){
         System.out.println("进入findGamebytypeService");
         List<Game> list=new ArrayList<Game>();
         list=mapper.findGamebytype(type);
         return list;
     }
-    public List<Game> findGamebyname(String name){
+    public List<Game> findGamebyname(int page,int page_size,String name){
         System.out.println("进入findGamebyname");
         List<Game> list=new ArrayList<Game>();
-        list=mapper.findGamebyname(name);
+        int fo=page*page_size;
+        int to=page_size;
+        list=mapper.findGamebyname(fo, to, name);
         return list;
     }
     public Boolean insertGame(Game game){
@@ -44,5 +52,19 @@ public class GameService {
         System.out.println("findGamebyidService");
         list=mapper.findGamebyid(id);
         return list;
+    }
+    public int findTotal(String name){
+        System.out.println("进入findTotalService");
+        return mapper.findTotal(name);
+    }
+    public boolean deleteGame(Game game){
+        System.out.println("进入deletegameService");
+        mapper.deleteGame(game);
+        return true;
+    }
+    public boolean updateGame(Game game){
+        System.out.println("进入updateGameService");
+        mapper.updateGame(game);
+        return true;
     }
 }

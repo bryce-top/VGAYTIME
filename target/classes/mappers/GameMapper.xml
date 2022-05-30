@@ -6,9 +6,15 @@
 
     <select id="selectAll" resultType="com.example.game.entity.Game">
         select
-            id, name, company
+            *
         from gameinfo
 
+    </select>
+    <select id="uncheckGame" resultType="com.example.game.entity.Game">
+        select
+            *
+        from gameinfo
+        where `check`=false
     </select>
     <select id="findGamebytype" resultType="com.example.game.entity.Game">
         select
@@ -20,6 +26,7 @@
         select
             *
         from gameinfo where name like "%"#{name }"%"
+        limit #{fo},#{to}
 
     </select>
     <select id="findGamebyid" resultType="com.example.game.entity.Game">
@@ -35,10 +42,22 @@
 
     </insert>
     <select id="check" resultType="com.example.game.entity.Game">
-        update game
-        set status = true
+        update gameinfo
+        set `check` = true
         where id = #{id}
     </select>
+    <select id="findTotal" resultType="int">
+        select count(id)
+        from gameinfo where name like "%"#{name }"%"
+    </select>
+    <delete id="deleteGame" parameterType="com.example.game.entity.Game">
+        DELETE FROM gameinfo
+        WHERE id = #{game.id};
 
-
+    </delete>
+    <update id="updateGame" parameterType="com.example.game.entity.Game" >
+        update gameinfo
+        set name=#{game.name},type=#{game.type}, company=#{game.company}, region=#{game.region}, dimension=#{game.dimension}, content = #{game.content}
+        where id=#{game.id}
+    </update>
 </mapper>

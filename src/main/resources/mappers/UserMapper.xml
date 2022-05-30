@@ -38,9 +38,20 @@
     </select>
     <update id="updateUser" parameterType="com.example.game.entity.User" >
         update user
-        set username=#{user.username},password=#{user.password}
+        set username=#{user.username},password=#{user.password}, email=#{user.email}, sex=#{user.sex}, briefInfo=#{user.briefInfo}
         where account=#{user.account}
     </update>
+    <delete id="deleteUser" parameterType="com.example.game.entity.User">
+        DELETE FROM user
+        WHERE account = #{user.account};
+
+    </delete>
+    <select id="findId" resultType="int">
+        select
+            uid
+        from user
+        where account = #{account}
+    </select>
 
 
 </mapper>

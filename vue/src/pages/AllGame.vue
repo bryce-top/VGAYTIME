@@ -56,7 +56,7 @@ export default {
 
 <style scoped>
 #building{
-  background:url("../img/bak.png");
+  /*background:url("../img/bak.png");*/
   width:100%;
   height:100%;
   position:fixed;

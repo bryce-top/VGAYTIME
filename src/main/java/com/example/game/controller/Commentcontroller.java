@@ -14,12 +14,19 @@ public class Commentcontroller {
     @Resource
     private CommentService service;
     @GetMapping("/getGameComment")
-    public List<Comment> getGameComment(@RequestParam("game_id")int game_id){
-        List<Comment> list= service.getGameComment(game_id);
+    public List<Comment> getGameComment(int page,int page_size,int game_id){
+        System.out.println("getcommentControl");
+        List<Comment> list= service.getGameComment(page, page_size, game_id);
         return list;
     }
     @PostMapping("/insertGameComment")
-    public boolean insertGameComment(Comment comment){
+    public boolean insertGameComment(@RequestBody Comment comment){
+        System.out.println("insertGameCommentControl");
+        System.out.println(comment.getContent());
         return service.insertComment(comment);
+    }
+    @GetMapping("/getTotal")
+    public int getTotal(String game_id){
+        return service.getTotal(game_id);
     }
 }

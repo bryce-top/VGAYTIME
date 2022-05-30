@@ -21,17 +21,17 @@ public class UserService {
 
         return list;
     }
-    public Boolean loginCheck(String account,String password){
+    public int loginCheck(String account,String password){
         System.out.println("进入logincheckService");
         String re=mapper.findPassword(account,password);
         System.out.println(re);
         if (re==null){
-            return false;}
+            return 0;}
         if(re.equals(password)){
-            return true;
+            return mapper.findId(account);
         }else {
             System.out.println("false");
-            return false;
+            return 0;
         }
     }
     public boolean insertUser(User user){
@@ -50,6 +50,11 @@ public class UserService {
     public boolean updateUser(User user){
         System.out.println("进入updateUserService");
         mapper.updateUser(user);
+        return true;
+    }
+    public boolean deleteUser(User user){
+        System.out.println("进入deleteUserService");
+        mapper.deleteUser(user);
         return true;
     }
 

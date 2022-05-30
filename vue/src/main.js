@@ -28,7 +28,15 @@ Vue.prototype.$axios=Axios
 Axios.defaults.baseURL='/api'
 import header from "./pages/header";
 Vue.component('headbar', header);
-
+import userTable from "./pages/userTable";
+Vue.component('userTable',userTable);
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import updatePass from "./pages/updatePass";
+Vue.component('updatePass', updatePass);
+import gameCheck from "./pages/gameCheck";
+Vue.component('gameCheck',gameCheck);
+import gameManage from "./pages/gameManage";
+Vue.component('gameManage',gameManage);
 /* eslint-disable no-new */
 new Vue({
   vuetify,

@@ -1,5 +1,4 @@
 <template>
-  <div id="building">
   <div id="login">
     <headbar />
     <div id="poem" >
@@ -12,7 +11,7 @@
       <p style="text-align: center; position: relative; top: 45px;left:-8px;">
         <img
           src="https://sanegame.oss-cn-hangzhou.aliyuncs.com/LOGO.png"
-          style="position:absolute;width: 67px; height: 33px;top:-160px;left:100px;"
+          style="position:absolute;width: 67px; height: 33px;top:-160px;left:90px;"
         />
       </p>
       <div class="reg" style="color:white;">
@@ -20,17 +19,13 @@
               账号<el-input v-model="account" placeholder="请输入邮箱"></el-input><br><br><br>
               密码<el-input v-model="password" placeholder="请输入密码" type="password"></el-input><br><br>
               <p id="loginfo">{{loginfo}}</p>
-              <b-button id="loginbutton" type="submit" @click="login">登录</b-button>&nbsp&nbsp&nbsp&nbsp
-        <router-link :to="{path:'/register'}">
-          <b-button id="registerbutton" class="pagebutton">去注册</b-button>
-        </router-link>
+              <b-button id="loginbutton" type="submit" @click="login">登录</b-button>&nbsp&nbsp&nbsp&nbsp<router-link :to="{path:'/register'}"><b-button id="registerbutton" class="pagebutton">去注册</b-button></router-link>
         &nbsp&nbsp&nbsp&nbsp
 
           <b-button id="adminlogin" type="submit" class="pagebutton" @click="adminlogin">管理员</b-button>
 
       </div>
     </div>
-  </div>
   </div>
 
 
@@ -57,12 +52,13 @@ export default {
         this.axios.post('/do/user/login', "account="+this.account+"&password="+this.password+"")
           .then(res=> {
             console.log(res);
-            if (res.data){
+            if (res.data!=0){
 
               this.loginfo="登录成功";
 
               this.$cookies.set('account',this.account,'1h');
 
+              this.$cookies.set("user_id",res.data,'1h');
               window.location.href='/'
             }else {
             this.loginfo="账号或密码错误！"
@@ -80,8 +76,8 @@ export default {
           if (res.data){
 
             this.loginfo="登录成功";
-
-            this.$cookies.set('account',this.account,'1h');
+            this.$cookies.set("adminaccount",this.account,'1h');
+            //this.$cookies.set('account',this.account,'1h');
 
             window.location.href='/admin'
           }else {
@@ -95,14 +91,6 @@ export default {
 
 
 <style type="text/css">
-#building{
-  background:url("../img/bak.png");
-  width:100%;
-  height:100%;
-  position:fixed;
-  background-size:100% 100%;
-}
-
 #poem{
   text-align: left;
   left: 5%;

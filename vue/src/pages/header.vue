@@ -80,10 +80,8 @@ export default {
   methods:{
     getGame(){
       // window.location.href="http://localhost:8080/#/singleGame"
-      this.$router.push({path: "/singleGame",query: {name:this.kb_content}});
-      if(this.kb_content){
-        this.$store.dispatch('setSearchKey',this.kb_content)  //当输入词条时，将词条更新到数据仓库
-      }
+      this.$router.push({path: "/showGame",query: {name:this.kb_content}});
+
     },
     changeUser(){
       this.$cookies.remove('account')
