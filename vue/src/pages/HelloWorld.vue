@@ -100,12 +100,11 @@
 
 
 <script>
-// import { slider, slideritem } from 'vue-concise-slider';
+
 import headbar from '@/pages/header';
 export default {
   components:{ headbar,
-    // slider,
-    // slideritem
+
   },
   name: 'HelloWorld',
   data () {
