@@ -8,7 +8,7 @@
         select
             *
         from gameinfo
-
+        where `check` = true
     </select>
     <select id="uncheckGame" resultType="com.example.game.entity.Game">
         select
@@ -19,26 +19,26 @@
     <select id="findGamebytype" resultType="com.example.game.entity.Game">
         select
             *
-        from gameinfo where type like "%"#{type}"%"
+        from gameinfo where type like "%"#{type}"%" and `check` = true
 
     </select>
     <select id="findGamebyname" resultType="com.example.game.entity.Game">
         select
             *
-        from gameinfo where name like "%"#{name }"%"
+        from gameinfo where name like "%"#{name }"%" and `check` = true
         limit #{fo},#{to}
 
     </select>
     <select id="findGamebyid" resultType="com.example.game.entity.Game">
         select
             *
-        from gameinfo where id =#{id }
+        from gameinfo where id =#{id } and `check` = true
 
     </select>
     <insert id="insertGame" parameterType="com.example.game.entity.Game">
         insert into gameinfo
-            (id,name,company,console,type ,introduction,sale_time,verify) values
-        (#{game.id},#{game.name},#{game.company},#{game.console},#{game.type},#{game.introduction},#{game.sale_time},#{game.verify})
+            (name,company,type,region,content,dimension) values
+        (#{game.name},#{game.company},#{game.type},#{game.region},#{game.content},#{game.dimension})
 
     </insert>
     <select id="check" resultType="com.example.game.entity.Game">
@@ -48,7 +48,7 @@
     </select>
     <select id="findTotal" resultType="int">
         select count(id)
-        from gameinfo where name like "%"#{name }"%"
+        from gameinfo where name like "%"#{name }"%" and `check` = true
     </select>
     <delete id="deleteGame" parameterType="com.example.game.entity.Game">
         DELETE FROM gameinfo

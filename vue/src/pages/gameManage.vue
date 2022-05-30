@@ -31,6 +31,15 @@
             max-width="500px"
           >
             <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                color="primary"
+                dark
+                class="mb-2"
+                v-bind="attrs"
+                v-on="on"
+              >
+                新增游戏
+              </v-btn>
             </template>
             <v-card>
               <v-card-title>
@@ -43,18 +52,17 @@
                     <v-col
                       cols="12"
                       sm="6"
-                      md="4"
+                      md="6"
                     >
                       <v-text-field
                         v-model="editedItem.name"
                         label="游戏名称"
-                        disabled
                       ></v-text-field>
                     </v-col>
                     <v-col
                       cols="12"
                       sm="6"
-                      md="4"
+                      md="6"
                     >
                       <v-text-field
                         v-model="editedItem.type"
@@ -64,7 +72,7 @@
                     <v-col
                       cols="12"
                       sm="6"
-                      md="4"
+                      md="6"
                     >
                       <v-text-field
                         v-model="editedItem.company"
@@ -74,7 +82,7 @@
                     <v-col
                       cols="12"
                       sm="6"
-                      md="4"
+                      md="6"
                     >
                       <v-text-field
                         v-model="editedItem.region"
@@ -84,7 +92,7 @@
                     <v-col
                       cols="12"
                       sm="6"
-                      md="4"
+                      md="6"
                     >
                       <v-text-field
                         v-model="editedItem.dimension"
@@ -94,7 +102,7 @@
                     <v-col
                       cols="12"
                       sm="6"
-                      md="4"
+                      md="12"
                     >
                       <v-text-field
                         v-model="editedItem.content"
@@ -262,16 +270,23 @@ export default {
     save () {
       if (this.editedIndex > -1) {
         Object.assign(this.games[this.editedIndex], this.editedItem)
+        this.$axios.post('/do/game/updateGame', this.editedItem)
+          .then(res=> {
+            console.log(res);
+            console.log('333')
+          })
+        this.close()
       } else {
         this.games.push(this.editedItem)
+        console.log(this.editedItem)
+        this.$axios.post('/do/game/insertGame', this.editedItem)
+          .then(res=> {
+            console.log(res);
+            console.log('333')
+          })
+        this.close()
       }
       // var obj = {'email': this.editedItem.email, 'password': this.editedItem.password, 'sex':this.editedItem.sex, 'briefInfo': this.editedItem.briefInfo, 'account': this.editedItem.account, 'username':this.editedItem.username}
-      this.$axios.post('/do/game/updateGame', this.editedItem)
-        .then(res=> {
-          console.log(res);
-          console.log('333')
-        })
-      this.close()
     },
   },
 }

@@ -23,8 +23,8 @@
                   </v-list-item>
 
                   <v-list-item link>
-                    <v-list-item-content>
-                      <v-list-item-title class="text-h6">
+                    <v-list-item-content @click="welcome">
+                      <v-list-item-title class="text-h6" >
                         你好
                       </v-list-item-title>
                       <v-list-item-subtitle>{{email}}</v-list-item-subtitle>
@@ -106,7 +106,7 @@
               >
                 <v-row align="center">
                   <v-col class="grow">
-                    开始工作吧，今天有5条未审批的游戏
+                    开始工作吧，今天有{{number}}条未审批的游戏
                   </v-col>
                   <v-col class="shrink">
                     <v-btn @click="gameCheck">审批</v-btn>
@@ -168,6 +168,19 @@ export default {
       this.isGameCheck = false;
       this.isMyInfo = true;
       this.isWelcome = false;
+    },
+    welcome() {
+      this.isUserManage = false;
+      this.isGameManage = false;
+      this.isGameCheck = false;
+      this.isMyInfo = false;
+      this.isWelcome = true;
+      this.$axios.get('/do/admin/totalUncheck')
+        .then(res=> {
+          console.log(res.data);
+          this.number = res.data;
+          console.log('555');
+        })
     }
   },
   data() {
@@ -179,8 +192,16 @@ export default {
         isWelcome: true,
         email:this.$cookies.get('adminaccount'),
         users: [],
+        number:''
       }
     },
-
+  created() {
+    this.$axios.get('/do/admin/totalUncheck')
+      .then(res=> {
+        console.log(res.data);
+        this.number = res.data;
+        console.log('555');
+      })
+  }
 }
 </script>

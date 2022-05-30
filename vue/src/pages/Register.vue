@@ -54,7 +54,7 @@ export default {
         .then(res=> {
           console.log(res);
 
-          window.location.href='/'
+          window.location.href='/login'
         })
         .catch(function (error) {
           console.log(error);

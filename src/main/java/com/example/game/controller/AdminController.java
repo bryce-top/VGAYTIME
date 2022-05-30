@@ -36,5 +36,9 @@ public class AdminController {
         System.out.println("updatePass controller");
         return service.updatePass(admin);
     }
-
+    @RequestMapping(value = "/totalUncheck", method = RequestMethod.GET)
+    public int totalUncheck(){
+        System.out.println("totalUncheck controller");
+        return service.totalUncheck();
+    }
 }

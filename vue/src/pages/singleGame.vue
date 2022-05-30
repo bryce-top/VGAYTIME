@@ -27,8 +27,8 @@
       <hr class="my-4">
     <div id="singlecomment" v-for="item in comment" >
       <b-list-group  >
-        <b-list-group-item style="background-color: #2c3e50;"><p style="font-size: small"> {{ item.username }}</p><p style="color: white">{{item.content}}</p> </b-list-group-item>
-
+        <b-list-group-item style="background-color: #2c3e50;"><p style="font-size: small"> {{ item.username }}</p><p style="color: white">{{item.content}}</p><v-icon>
+          {{ icon }}</v-icon> </b-list-group-item>
 
       </b-list-group>
     </div>
@@ -69,7 +69,8 @@ export default {
       page_size: 15,
       page_count: 10,
       comment:[],
-      newcomment:''
+      newcomment:'',
+      icon:'mdi_favorite_border'
     }
   },
   methods:{
