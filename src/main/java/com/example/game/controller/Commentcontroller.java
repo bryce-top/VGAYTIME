@@ -1,4 +1,5 @@
 package com.example.game.controller;
+import com.example.game.entity.Game;
 import com.example.game.service.CommentService;
 import org.apache.ibatis.annotations.Param;
 import javax.annotation.Resource;
@@ -14,8 +15,11 @@ public class Commentcontroller {
     @Resource
     private CommentService service;
     @GetMapping("/getGameComment")
-    public List<Comment> getGameComment(int page,int page_size,int game_id){
+    public List<Comment> getGameComment( int page,int page_size,int game_id){
         System.out.println("getcommentControl");
+        System.out.println(page);
+        System.out.println(page_size);
+        System.out.println(game_id);
         List<Comment> list= service.getGameComment(page, page_size, game_id);
         return list;
     }
@@ -28,5 +32,11 @@ public class Commentcontroller {
     @GetMapping("/getTotal")
     public int getTotal(String game_id){
         return service.getTotal(game_id);
+    }
+    @PostMapping("/deleteComment")
+    public boolean deleteComment(@RequestBody Comment comment){
+        System.out.println(comment.getId());
+        int id = comment.getId();
+        return service.deleteComment(id);
     }
 }

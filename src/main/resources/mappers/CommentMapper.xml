@@ -16,5 +16,10 @@
         select count(id) from comment
         where game_id=#{game_id}
     </select>
+    <delete id="deleteComment" parameterType="com.example.game.entity.Comment">
+        DELETE FROM comment
+        WHERE id = #{id};
+
+    </delete>
 
 </mapper>
