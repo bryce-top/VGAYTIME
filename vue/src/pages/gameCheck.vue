@@ -30,6 +30,14 @@
               >
                 通过
               </v-btn>
+              <v-btn
+                :disabled="!valid"
+                color="error"
+                class="mr-4"
+                @click="refuse(item)"
+              >
+                拒绝
+              </v-btn>
               <v-switch
                 :input-value="isExpanded(item)"
                 :label="isExpanded(item) ? '关闭' : '查看详情'"
@@ -115,6 +123,14 @@ export default {
       this.$axios.post('/do/admin/gameCheck', obj)
         .then(res=> {
           console.log(res);
+        })
+    },
+    refuse(item){
+      this.games.splice(this.games.indexOf(item), 1);
+      this.$axios.post('/do/game/deleteGame', item)
+        .then(res=> {
+          console.log(res);
+          console.log('333')
         })
     }
   }
