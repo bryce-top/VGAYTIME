@@ -1,5 +1,6 @@
 package com.example.game.mapper;
 import com.example.game.entity.Comment;
+import com.example.game.entity.Game;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,4 +11,5 @@ public interface CommentMapper {
     public boolean insertComment(@Param("comment") Comment comment);
     public int getTotal(@Param("game_id") String game_id);
     public boolean addStar(@Param("id")int id);
+    public void deleteComment(@Param("id") int id);
 }

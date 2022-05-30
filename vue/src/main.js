@@ -37,6 +37,8 @@ import gameCheck from "./pages/gameCheck";
 Vue.component('gameCheck',gameCheck);
 import gameManage from "./pages/gameManage";
 Vue.component('gameManage',gameManage);
+import commentManage from "./pages/commentManage";
+Vue.component('commentManage',commentManage);
 /* eslint-disable no-new */
 new Vue({
   vuetify,

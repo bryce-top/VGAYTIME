@@ -21,5 +21,10 @@
         set star=star+1
         where id=#{id}
     </update>
+    <delete id="deleteComment" parameterType="com.example.game.entity.Comment">
+        DELETE FROM comment
+        WHERE id = #{id};
+
+    </delete>
 
 </mapper>

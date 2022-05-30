@@ -14,8 +14,11 @@ public class Commentcontroller {
     @Resource
     private CommentService service;
     @GetMapping("/getGameComment")
-    public List<Comment> getGameComment(int page,int page_size,int game_id){
+    public List<Comment> getGameComment( int page,int page_size,int game_id){
         System.out.println("getcommentControl");
+        System.out.println(page);
+        System.out.println(page_size);
+        System.out.println(game_id);
         List<Comment> list= service.getGameComment(page, page_size, game_id);
         return list;
     }
@@ -33,5 +36,11 @@ public class Commentcontroller {
     public boolean addStar( int id){
         System.out.println("addStarControl");
         return service.addStar(id);
+    }
+    @PostMapping("/deleteComment")
+    public boolean deleteComment(@RequestBody Comment comment){
+        System.out.println(comment.getId());
+        int id = comment.getId();
+        return service.deleteComment(id);
     }
 }

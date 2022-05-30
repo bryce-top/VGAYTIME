@@ -57,6 +57,7 @@
                       <v-text-field
                         v-model="editedItem.name"
                         label="游戏名称"
+                        :disabled="isDisable"
                       ></v-text-field>
                     </v-col>
                     <v-col
@@ -176,6 +177,7 @@
 <script>
 export default {
   data: () => ({
+    isDisable: false,
     dialog: false,
     dialogDelete: false,
     search: '',
@@ -287,7 +289,9 @@ export default {
         this.close()
       }
       // var obj = {'email': this.editedItem.email, 'password': this.editedItem.password, 'sex':this.editedItem.sex, 'briefInfo': this.editedItem.briefInfo, 'account': this.editedItem.account, 'username':this.editedItem.username}
-    },
+    }
+
+
   },
 }
 </script>
