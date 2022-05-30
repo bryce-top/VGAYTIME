@@ -27,7 +27,9 @@
       <hr class="my-4">
     <div id="singlecomment" v-for="item in comment" >
       <b-list-group  >
-        <b-list-group-item style="background-color: #2c3e50;color: white">{{ item.content }}</b-list-group-item>
+        <b-list-group-item style="background-color: #2c3e50;"><p style="font-size: small"> {{ item.username }}</p><p style="color: white">{{item.content}}</p> </b-list-group-item>
+
+
       </b-list-group>
     </div>
   </div>
@@ -87,19 +89,7 @@ export default {
             this.getData()
           }
         });}
-      // else if(this.$route.query.name){
-      //   var name=this.$route.query.name
-      //   this.axios.get("/do/comment/getGameComment?game_id="+this.$cookies.get("game_id"),).then(res=>{
-      //     var jsonObj =JSON.parse(JSON.stringify(res.data));
-      //     if (res.data!=''){
-      //       this.game=res.data;
-      //       this.reload()
-      //     }else{
-      //       alert("无数据！");
-      //       this.$router.push("/");
-      //     }
-      //   });
-      // }
+
     },
     lazyLoading () {
       const scrollTop = document.documentElement.scrollTop

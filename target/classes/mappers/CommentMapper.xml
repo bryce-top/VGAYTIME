@@ -3,9 +3,9 @@
 <mapper namespace="com.example.game.mapper.CommentMapper" >
 
     <select id="getGameComment" resultType="com.example.game.entity.Comment">
-        select *
-        from comment where game_id=#{game_id}
-        limit #{fo},#{to}
+        select * FROM
+        comment c,user u where c.game_id=#{game_id} AND u.uid=c.user_id
+        limit #{fo},#{to};
     </select>
     <insert id="insertComment" parameterType="com.example.game.entity.Comment">
         insert into comment

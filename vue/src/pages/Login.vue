@@ -57,7 +57,7 @@ export default {
               this.loginfo="登录成功";
 
               this.$cookies.set('account',this.account,'1h');
-              alert(res.data)
+
               this.$cookies.set("user_id",res.data,'1h');
               window.location.href='/'
             }else {
