@@ -5,7 +5,7 @@
     <div v-for="(item,index) in game" @click="getGame(item.id)">
     <el-card shadow="hover" class="news"  >
       <p>{{item.name}}</p>
-      <img :src="findImg(item.id)" style="text-align: center;width:96%;height: 54%" >
+      <img :src=findImg(item.id) style="text-align: center;width:96%;height: 54%" >
       <br><br>
      <p>{{item.company}}</p>
     </el-card>
@@ -50,8 +50,10 @@ export default {
     },
     findImg(id){
       console.log(id);
-      var ids=id.toString()
-      return require('../img/gameImg/'+ids+'/1.jpg');
+      if(id<=9){
+
+      return require('../img/gameImg/'+''+id+''+'/1.jpg');
+    }
 
     }
   }

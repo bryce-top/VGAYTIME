@@ -3,9 +3,13 @@
     <headbar />
 
 <div class="showGame">
-  <div v-for="item in game" id="list" @click="showGame(item.id)">
-    <h1 id="gamename">{{item.name}}</h1>
-    <p id="company">{{item.company}}</p>
+  <div v-for="(item,index) in game" @click="showGame(item.id)">
+    <el-card shadow="hover" class="news"  >
+      <p>{{item.name}}</p>
+      <img :src=findImg(item.id) style="text-align: center;width:96%;height: 54%" >
+      <br><br>
+      <p>{{item.company}}</p>
+    </el-card>
   </div>
 </div>
   </div>
@@ -77,6 +81,14 @@ export default {
       this.$cookies.set("game_id",id,"1h")
       this.$router.push({path: "/singleGame",query: {id:id}});
     },
+    findImg(id){
+      console.log(id);
+      if(id<=9){
+
+        return require('../img/gameImg/'+''+id+''+'/1.jpg');
+      }
+
+    },
     lazyLoading () {
       const scrollTop = document.documentElement.scrollTop
       const clientHeight = document.documentElement.clientHeight
@@ -117,6 +129,14 @@ export default {
   min-height: 94%;
   min-width: 100%;
   position: absolute;
+}
+.news{
+  width:400px;
+  height:400px;
+  float: left;
+  background: rgba(255,255,255,0.7);
+  border: #989595;
+  margin: 10px;
 }
 #list{
 

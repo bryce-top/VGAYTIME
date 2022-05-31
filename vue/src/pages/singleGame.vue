@@ -121,11 +121,12 @@
               </b-input-group-append>
             </b-input-group>
             <hr class="my-4">
-            <div id="singlecomment" v-for="item in comment" >
+            <div id="singlecomment" v-for="(item,index) in comment" >
               <b-list-group  >
-                <b-list-group-item style="background:rgba(138,43,226,0.2);color:whitesmoke;border-bottom-color: whitesmoke"><p style="font-size: small"> {{ item.username }}</p><p style="color: white">{{item.content}}</p><v-icon>
-                  {{ icon }}</v-icon> </b-list-group-item>
-
+                <b-list-group-item style="background:rgba(138,43,226,0.2);color:whitesmoke;border-bottom-color: whitesmoke">
+                  <p style="font-size: small"> {{ item.username }}</p><p style="color: white">{{item.content}}</p>
+                  <v-icon @click="addStar(item.id,index)">{{ icon }} </v-icon><p style="position: absolute;top: 85px;left: 150px">{{item.star}}</p>
+                </b-list-group-item>
               </b-list-group>
             </div>
           </div>
@@ -285,6 +286,10 @@ export default {
       },(err)=>{
         console.log(err);
       })
+    },addStar(id,index){
+      this.axios.get("/do/comment/addStar?id="+id).then(res=>{
+        this.$set(this.comment[index].star=this.comment[index].star+1)
+      })
     },
     insertComment(){
       var obj={'user_id':this.$cookies.get("user_id"),'game_id':this.$cookies.get("game_id"),'content':this.newcomment}
@@ -303,12 +308,15 @@ export default {
       gameinfo:'',
       type:'',
       dimension:'',
+      icon:'mdi_favorite_border',
       page: 0,
       page_size: 15,
       page_count: 10,
       comment:[],
       newcomment:'',
-      imgArray: [],
+      imgArray: [
+
+      ],
       List : [
         {
           html: 'slider1',
