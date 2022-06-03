@@ -45,11 +45,26 @@
           >
             <b-form-input id="nested-country" v-model="user.password" type="password"></b-form-input>
           </b-form-group>
-
+          <b-form-group
+            label-cols-sm="3"
+            label="性别:"
+            label-align-sm="right"
+            label-for="nested-state"
+          >
+            <b-form-input id="nested-state" v-model="user.sex"></b-form-input>
+          </b-form-group>
+          <b-form-group
+            label-cols-sm="3"
+            label="个人简介:"
+            label-align-sm="right"
+            label-for="nested-state"
+          >
+            <b-form-input id="nested-state" v-model="user.briefInfo"></b-form-input>
+          </b-form-group>
           <b-button @click="changeInfo">提交</b-button>
         </b-form-group>
       </b-card>
-      <router-link :to="{path:'/addGame'}">添加游戏</router-link>
+
     </div>
   </div>
 </template>
@@ -68,7 +83,9 @@ export default {
         username:'',
         account:'',
         email:'',
-        password:''
+        password:'',
+        sex:'',
+        briefInfo:''
       },
     }
   },
@@ -83,6 +100,8 @@ export default {
         this.user.account=res.data.account;
         this.user.email=res.data.email;
         this.user.password=res.data.password;
+        this.user.sex=res.data.sex
+        this.user.briefInfo=res.data.briefInfo
         // this.user=res.data;
       }
     })
@@ -97,8 +116,6 @@ export default {
       this.axios.post('/do/user/updateUser', this.user)
         .then(res=> {
           console.log(res);
-
-
         })
         .catch(function (error) {
           console.log(error);
