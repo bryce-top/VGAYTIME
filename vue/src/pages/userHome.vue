@@ -1,7 +1,8 @@
 <template>
+  <div id="building">
   <div>
     <headbar />
-    <div id="form">
+    <div id="form" style="margin: auto;">
       <b-card bg-variant="light">
         <b-form-group
           label-cols-lg="3"
@@ -67,6 +68,7 @@
 
     </div>
   </div>
+  </div>
 </template>
 
 <script>
@@ -127,9 +129,17 @@ export default {
 
 <style scoped>
 #form{
+  position: absolute;
   width: 60%;
   height: 100%;
-  float: top;
+  top:10%;
+  left:20%;
 }
-
+#building{
+  background:url("../img/bak.png");
+  width:100%;
+  height:100%;
+  position:fixed;
+  background-size:100% 100%;
+}
 </style>
